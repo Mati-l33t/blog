@@ -3,8 +3,8 @@ import path from 'path'
 import { Feed } from 'feed'
 import { createContentLoader, type ContentData, type SiteConfig } from 'vitepress'
 
-const id: string = 'aiktb'
-const baseUrl: string = `https://aiktb.dev`
+const id: string = 'code2life'
+const baseUrl: string = `https://code2life.top`
 type RssGenerator = (config: SiteConfig) => Promise<void>
 export const feed: RssGenerator = async (config) => {
   const feed: Feed = new Feed({
@@ -12,8 +12,8 @@ export const feed: RssGenerator = async (config) => {
     title: `${id}'s blog`,
     language: 'en-US',
     link: baseUrl,
-    description: 'A technology-driven blog created by aiktb.',
-    image: `${baseUrl}/social-preview.png`,
+    description: 'Joey Yang\'s blog',
+    image: `${baseUrl}/logo.png`,
     favicon: `${baseUrl}/favicon.ico`,
     copyright: `Copyright (c) 2023-present ${id}`,
   })
@@ -35,7 +35,7 @@ export const feed: RssGenerator = async (config) => {
       link: `${baseUrl}${url.replace(/\/\d+\./, '/')}`,
       date: frontmatter.date,
       content: html!,
-      author: [{ name: `${id}`, email: 'hey@aiktb.dev', link: 'https://github.com/aiktb' }],
+      author: [{ name: `${id}`, email: 'code2life@ustc.edu', link: 'https://github.com/code2life' }],
     })
   }
 

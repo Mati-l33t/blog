@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: Blog
-aside: false
+aside: true
 comments: false
 progress: false
 ---

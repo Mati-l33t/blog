@@ -5,20 +5,20 @@
   "license": "MIT",
   "type": "module",
   "author": {
-    "name": "aiktb",
-    "email": "hey@aiktb.dev",
-    "url": "https://aiktb.dev"
+    "name": "code2life",
+    "email": "code2life@ustc.edu",
+    "url": "https://code2life.top"
   },
   "engines": {
     "node": ">=20.0.0"
   },
-  "homepage": "https://github.com/aiktb/Rea#readme",
+  "homepage": "https://github.com/code2life/joey-blog-site#readme",
   "bugs": {
-    "url": "https://github.com/aiktb/Rea/issues"
+    "url": "https://github.com/code2life/joey-blog-site/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aiktb/Rea.git"
+    "url": "git+https://github.com/code2life/joey-blog-site.git"
   },
   "scripts": {
     "dev": "vitepress dev docs",

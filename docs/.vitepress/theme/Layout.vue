@@ -15,9 +15,14 @@ const { Layout } = DefaultTheme
     </template>
     <template #doc-after>
       <Comments />
+      
     </template>
     <template #aside-outline-after>
+      
       <Message />
+    </template>
+    <template #layout-bottom>
+      <div class="paperOverlay">asdfg</div>
     </template>
   </Layout>
 </template>

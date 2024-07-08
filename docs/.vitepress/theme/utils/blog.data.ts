@@ -1,10 +1,11 @@
 import { groupBy } from 'lodash-es'
 import { createContentLoader, type ContentData } from 'vitepress'
 
-interface Post {
+export interface Post {
   title: string
   url: string
   date: string // YYYY-MM-DD
+  tags: string[]
 }
 
 // `@types/lodash-es` does not export `Dictionary` type definition.
@@ -25,11 +26,18 @@ const formatURL = (url: string): string => {
 
 const transformRawPosts = (rawPosts: ContentData[]) => {
   const posts: Post[] = rawPosts
-    .map((post) => ({
-      title: extractTitle(post.src!),
-      url: formatURL(post.url),
-      date: (post.frontmatter.date as Date).toISOString().slice(0, 10),
-    }))
+    .map((post) => {
+      const { title, date, tags } = post.frontmatter
+      // if (title?.trim()) {
+      //   post.src = `# ${title.trim()}\n\n${post.src}`
+      // }
+      return {
+        title: title?.trim() || extractTitle(post.src!),
+        url: formatURL(post.url),
+        date: date instanceof Date ? date.toISOString().slice(0, 10) : "N/A",
+        tags: tags?.map((t: string) => t.trim()) ?? ['no-tags']
+      }
+    })
     .sort((a, b) => b.date.localeCompare(a.date))
 
   return groupBy(posts, (post) => post.date.slice(0, 4))

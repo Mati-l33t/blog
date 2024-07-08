@@ -17,17 +17,17 @@ const { frontmatter, title } = useData()
     <component
       :is="'script'"
       src="https://giscus.app/client.js"
-      data-repo="aiktb/Rea"
-      data-repo-id="R_kgDOJQkw9Q"
+      data-repo="code2life/joey-blog-site"
+      data-repo-id="R_kgDOMKHxxw"
       data-category="General"
-      data-category-id="DIC_kwDOJQkw9c4CVeXc"
+      data-category-id="DIC_kwDOMKHxx84Cgnyh"
       data-mapping="pathname"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="top"
       data-lang="en"
-      data-theme="transparent_dark"
+      data-theme="light_tritanopia"
       data-loading="lazy"
       async
     />
