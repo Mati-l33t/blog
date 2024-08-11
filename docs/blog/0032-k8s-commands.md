@@ -2,9 +2,10 @@
 title:      "[分布式专题] Kubernetes及Helm术语和常用命令"
 date:       2018-10-27
 tags:
-    - kubernetes
-    - helm
+    - Kubernetes
 ---
+
+# {{ $frontmatter.title }}
 
 ## Kubernetes资源对象及管理命令
 

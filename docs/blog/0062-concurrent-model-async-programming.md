@@ -2,8 +2,11 @@
 title:      "白话并发模型和异步编程范式"
 date:       2021-05-31
 tags:
-    - concurrency
+    - 软件设计
+    - 分布式系统
 ---
+
+# {{ $frontmatter.title }}
 
 ![](https://filecdn.code2life.top/blog/%2A%2Alangs-influence.png)
 

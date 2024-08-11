@@ -2,9 +2,11 @@
 title:      "[ServiceMesh] 服务网格istio入门实践"
 date:       2019-05-03
 tags:
-    - istio
-    - kubernetes
+    - DevOps
+    - Kubernetes
 ---
+
+# {{ $frontmatter.title }}
 
 
 > 2020年更新：由于 istio 1.5 发生了重大的架构改动，本篇小部分内容与当前最新版本不完全一致。istio目前仍然处于不太成熟的阶段，最近出现了一下eBPF模式的无代理ServiceMesh，也值得关注。
@@ -188,6 +190,7 @@ spec:
     labels:
       version: v3
 ---
+
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
@@ -339,6 +342,7 @@ spec:
     hosts:
     - "*"
 ---
+
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -535,6 +539,7 @@ spec:
     latency: response.duration | "0ms"
   monitored_resource_type: '"UNSPECIFIED"'
 ---
+
 # Fluentd handler 配置
 apiVersion: "config.istio.io/v1alpha2"
 kind: fluentd
@@ -544,6 +549,7 @@ metadata:
 spec:
   address: "fluentd-es.logging:24224"
 ---
+
 # 定义Rule，所有请求提取newlog Instance发送给fluentd Handler
 apiVersion: "config.istio.io/v1alpha2"
 kind: rule
@@ -557,6 +563,7 @@ spec:
      instances:
      - newlog.logentry
 ---
+
 ```
 
 Apply到集群之后，在ElasticSearch相应的Kibana上，就可以查询到所有请求的日志了。

@@ -2,9 +2,10 @@
 title:      "软件设计杂谈——事件驱动"
 date:       2020-08-12
 tags:
-    - architect
-    - event-driven
+    - 软件设计
 ---
+
+# {{ $frontmatter.title }}
 
 ## 总有一个轮询
 

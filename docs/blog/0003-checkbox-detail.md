@@ -1,11 +1,11 @@
 ---
-title:      "[Web前端] Checkbox中的细节"
+title:      "前端Checkbox中的细节"
 date:       2017-08-03
 tags:
-    - 前端
-    - JavaScript
-    - jQuery
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 
 ### 选择器

@@ -1,10 +1,12 @@
 ---
-title:      "[随笔] 软件项目怎么做好技术方案选型?"
+title:      "软件项目怎么做好技术方案选型?"
 date:       2023-11-30
 tags:
-    - notes
-    - Software Engineering
+    - 管理学
+    - 软件设计
 ---
+
+# {{ $frontmatter.title }}
 
 ## 前言
 

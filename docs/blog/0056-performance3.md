@@ -2,9 +2,10 @@
 title:      "软件设计杂谈——性能优化的十种手段（下篇）"
 date:       2020-08-13
 tags:
-    - architect
-    - performance
+    - 软件设计
 ---
+
+# {{ $frontmatter.title }}
 
 
 ## 索引

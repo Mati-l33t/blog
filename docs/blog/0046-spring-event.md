@@ -1,10 +1,11 @@
 ---
-title:      "[Java杂技] Spring Events泛型使用方法"
+title:      "Spring Events泛型使用方法"
 date:       2019-10-31
 tags:
-    - java
-    - spring
+    - Java
 ---
+
+# {{ $frontmatter.title }}
 
 ## 引言
 

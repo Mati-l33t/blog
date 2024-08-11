@@ -9,16 +9,16 @@ progress: false
 
 <script setup lang="ts">
 import Framework from '.vitepress/theme/components/VFramework.vue';
+import RecentBlog from '.vitepress/theme/components/VRecentBlog.vue'
 </script>
 
-<h1 align="center">About Me 👨‍💻</h1>
+<h2 style="padding-top: 0px;margin: 0px 0 16px;border-top: none;">About Me 👨‍💻</h2>
 
-Hey there, I'm Joey Yang, a Full-Stack engineer, lifelong learner, NJU & USTC graduate, currently work at ZOOM as a manager & PM & architect.
+Hey there, I'm Joey Yang, a full-stack engineer, lifelong learner, NJU & USTC graduate, currently working at ZOOM as a manager & architect & product engineer.
 
-My career goal is to build some awesome products and services that can help people in scalable way.
+My career goal is to build awesome SaaS products that can help people in scalable way.
 
-In the real world, I'm living in China with my family, raising 2 kids. In my leisure time, I enjoy badminton and table tennis. My long-term plan is to be a global citizen and travel to various places.
+In the real world, I'm living in China, plan to be a global citizen. In my leisure time, I enjoy reading all kinds of books, badminton and table tennis.
 
-<h1 align="center">Recent Posts 📖</h1>
-
-TODO
+<h2>Recent Posts 📙</h2>
+<RecentBlog />

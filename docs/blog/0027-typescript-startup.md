@@ -2,8 +2,10 @@
 title:      "[Typescript入门] 基础开发和调试环境配置"
 date:       2018-06-19
 tags:
-    - typescript
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 自从换了新工作之后, 有一个多月没更新博客了, 上个月发生了很多事情, 从入职到开始搬砖, 然后一波加班Combo, 到现在终于可以忙里偷闲来写(hua)博(hua)客(shui)了. 由于最近几乎没有时间继续捯饬IoT, 暂时换个话题, 结合一下最近的工作, 开一个Typescript的坑吧.
 

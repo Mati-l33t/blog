@@ -1,9 +1,11 @@
 ---
-title:      "[DevOps]《SRE:Google运维解密》读后感"
+title:      "《SRE:Google运维解密》读后感"
 date:       2019-05-04
 tags:
-    - SRE
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 ## 引言
 

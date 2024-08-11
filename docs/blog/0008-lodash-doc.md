@@ -1,10 +1,11 @@
 ---
-title:      "[Javascript笔记] Lodash常用函数汇总"
+title:      "Lodash常用函数汇总"
 date:       2017-12-13
 tags:
-    - JavaScript
-    - lodash
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 > lodash是npm上最热门的一个模块, 提供了非常多的实用函数, nodejs服务端函数式编程必备, 由于文档非常多, 这里列举了大部分常用函数的简略信息, 供查询温习使用, 文档正门在这里: [lodash文档](https://lodash.com/docs/)
 
 > 格式 : [函数名 - 简述 - 参数 - 返回值 - 备注信息]

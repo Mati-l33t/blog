@@ -2,10 +2,10 @@
 title:      "[DevOps] Prometheus监控告警——基础篇"
 date:       2020-02-28
 tags:
-    - prometheus
-    - alert
-    - monitor
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 最近两年做DevOps相关工作时，学了一些Prometheus监控告警系统的知识并规模化实践落地，这个系列分享一些关于Prometheus的技术干货。
 

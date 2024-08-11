@@ -2,11 +2,13 @@
 title:      "工作流引擎Temporal学习笔记"
 date:       2023-01-23
 tags:
-    - temporal
-    - workflow
-    - java
-    - typescript
+    - 分布式系统
+    - Golang
+    - Java
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 - [Temporal简介](#temporal简介)
     - [编排的本质是什么？](#编排的本质是什么)

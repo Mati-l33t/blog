@@ -1,9 +1,9 @@
 ---
-title:      "[Java 杂货] Mybatis Generator的配置和使用"
+title:      "Mybatis Generator的配置和使用"
 date:       2018-01-06
 tags:
-    - java
-    - mybatis
+    - Java
+    - Database
 ---
 
 ## Mybatis Generator的配置

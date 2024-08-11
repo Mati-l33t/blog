@@ -5,3 +5,4 @@ docs/.vitepress/dist/
 .vscode/
 # An md file that begins with a dot should be considered a draft.
 .*.md
+docs/.DS_Store

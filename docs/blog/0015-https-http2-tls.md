@@ -1,10 +1,11 @@
 ---
-title:      "[杂记] Http升级之路"
+title:      "Http协议升级之路"
 date:       2018-02-05
 tags:
-    - http
-    - SSL/TLS
+    - Others
 ---
+
+# {{ $frontmatter.title }}
 
 > 几乎所有Web相关的技术都离不开其传输协议HTTP, 纵观HTTP本身的发展历程, 从简单到复杂, 再到一个完备的体系, HTTP在不断完善的期间如何解决各种问题的方式, 非常值得学习
 

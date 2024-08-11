@@ -1,9 +1,8 @@
 ---
-title:      "[Oracle数据库] 常用SQL及性能优化汇总"
+title:      "Oracle常用SQL及性能优化汇总"
 date:       2018-02-11
 tags:
-    - oracle
-    - sql
+    - Database
 ---
 
 >本文记录一些作为DBA或数据库开发角色所要了解的Sql语句和关于Oracle的知识技巧

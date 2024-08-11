@@ -1,9 +1,11 @@
 ---
-title:      "[分布式专题] Docker命令合集"
+title:      "Docker命令合集"
 date:       2018-03-10
 tags:
-    - docker
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 ## Docker 命令行接口
 Docker提供了丰富的CLI用于容器的管理及相关配置, 这里记录一些**常用的命令和参数**

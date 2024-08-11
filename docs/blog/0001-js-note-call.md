@@ -1,11 +1,14 @@
 ---
-title:      "[Javascript笔记] this call apply的用法总结"
+title:      "this call apply的用法总结"
 date:       2017-06-27
 tags:
-    - 前端
-    - JavaScript
-    - jQuery
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
+
+
+
 ### this的特性与用法
 ##### 作为对象的方法调用
 **指向该对象**

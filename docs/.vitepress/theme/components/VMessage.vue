@@ -19,7 +19,7 @@ for (const key in groupedPosts) {
 
 <template>
   <section class="mt-3 pl-4 text-[14px]/7">
-    <div class="font-bold" role="heading" aria-level="2">Tags</div>
+    <div class="font-bold" role="heading" aria-level="2">All Tags</div>
     <address class="flex flex-col text-[--vp-c-text-2]">
       <a
         v-for="(item, val) in allTags"

@@ -1,10 +1,11 @@
 ---
-title:      "[C# 杂货] Delegate详解"
+title:      "C# Delegate详解"
 date:       2018-04-04
 tags:
     - C#
-    - .Net
 ---
+
+# {{ $frontmatter.title }}
 
 ## Delegate的定义及作用
 #### Delegate是什么

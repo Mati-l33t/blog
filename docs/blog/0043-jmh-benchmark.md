@@ -1,10 +1,11 @@
 ---
-title:      "[Java杂技] 使用JMH编写基准测试"
+title:      "使用JMH编写Java基准测试"
 date:       2019-05-11
 tags:
-    - java
-    - benchmark
+    - Java
 ---
+
+# {{ $frontmatter.title }}
 
 最近因为项目需要重拾Java，项目涉及到很多日期时间相关的计算和存储，所以打算用极其便捷且线程安全的LocalDateTime类型代替古老的Date类型，那么问题来了：**Date类型和LocalDateTime类型的JSON解析的性能如何呢**？
 

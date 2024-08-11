@@ -1,10 +1,11 @@
 ---
-title:      "[Javascript笔记] ES6的变化与新特性(上篇)"
+title:      "ES6的变化与新特性(上篇)"
 date:       2017-12-01
 tags:
-    - JavaScript
-    - ES6
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 ## Part1. 变量声明与作用域的变化  
 

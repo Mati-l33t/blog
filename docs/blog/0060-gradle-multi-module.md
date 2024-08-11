@@ -2,9 +2,10 @@
 title:      "如何使用Gradle管理多模块Java项目"
 date:       2021-04-29
 tags:
-    - gradle
-    - java
+    - Java
 ---
+
+# {{ $frontmatter.title }}
 
 由于项目需要，我最近学习了一点关于Gradle的**入门知识**，本篇以一个**含有多个子项目的Java SpringBoot工程**为例，总结分享一下**Gradle的基本原理和正确使用方式**。
 

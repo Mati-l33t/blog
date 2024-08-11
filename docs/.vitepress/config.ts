@@ -5,7 +5,7 @@ import { feed } from './theme/utils/feed-rss'
 
 export default defineConfig({
   lang: 'en-US',
-  title: 'Code2Life',
+  title: 'Code2Life - 全栈开发|云原生|软件设计|管理思考',
   description: 'Joey Yang (Code2Life)\'s blog site',
   lastUpdated: false,
   cleanUrls: true,
@@ -36,31 +36,30 @@ export default defineConfig({
     // https://html.spec.whatwg.org/multipage/semantics.html#meta-color-scheme
     ['meta', { name: 'color-scheme', content: 'light dark' }],
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     /* Number font: Montserrat, Letter font: Raleway, Code font: JetBrains Mono
        Raleway font has ugly number, so use Montserrat for number. */
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&text=1234567890&display=swap',
-      },
-    ],
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-      },
-    ],
-    [
-      'script',
-      {
-        async: '',
-        src: 'https://www.googletagmanager.com/gtag/js?id=G-TJQVDW3EZK',
-      },
-    ],
+    // [
+    //   'link',
+    //   {
+    //     rel: 'stylesheet',
+    //     href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&text=1234567890&display=swap',
+    //   },
+    // ],
+    // [
+    //   'link',
+    //   {
+    //     rel: 'stylesheet',
+    //     href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+    //   },
+    // ],
+    // [
+    //   'script',
+    //   {
+    //     async: '',
+    //     src: 'https://www.googletagmanager.com/gtag/js?id=G-TJQVDW3EZK',
+    //   },
+    // ],
     [
       'script',
       {},

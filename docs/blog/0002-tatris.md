@@ -2,8 +2,10 @@
 title:      "[源码阅读] 60行代码的俄罗斯方块"
 date:       2017-07-15
 tags:
-    - JavaScript
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 ### 原版
 

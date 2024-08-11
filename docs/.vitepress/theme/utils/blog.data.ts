@@ -35,7 +35,8 @@ const transformRawPosts = (rawPosts: ContentData[]) => {
         title: title?.trim() || extractTitle(post.src!),
         url: formatURL(post.url),
         date: date instanceof Date ? date.toISOString().slice(0, 10) : "N/A",
-        tags: tags?.map((t: string) => t.trim()) ?? ['no-tags']
+        tags: tags?.map((t: string) => t.trim()) ?? ['no-tags'],
+        src: `# ${title.trim()}\n\n${post.src}`
       }
     })
     .sort((a, b) => b.date.localeCompare(a.date))
@@ -48,3 +49,4 @@ export default createContentLoader('blog/*.md', {
   // The raw will not contain any pages that begin with dot, such as `.example.md`.
   transform: (raw) => transformRawPosts(raw),
 })
+

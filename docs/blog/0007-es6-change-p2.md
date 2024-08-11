@@ -1,10 +1,11 @@
 ---
-title:      "[Javascript笔记] ES6的变化与新特性(下篇)"
+title:      "ES6的变化与新特性(下篇)"
 date:       2017-12-03
 tags:
-    - JavaScript
-    - ES6
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 ## Part3. Set & Map & Iterator
 #### Set数据结构

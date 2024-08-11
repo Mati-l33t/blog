@@ -1,10 +1,12 @@
 ---
-title:      "[随笔] 如何理解工程师的跨文化差异"
+title:      "如何理解工程师的跨文化差异"
 date:       2023-05-30
 tags:
-    - cultures
-    - software engineering
+    - 管理学
+    - 软件设计
 ---
+
+# {{ $frontmatter.title }}
 
 ## 前言
 

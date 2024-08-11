@@ -1,9 +1,11 @@
 ---
-title:      "[随笔] SaaS的本质是什么"
+title:      "SaaS的本质是什么"
 date:       2024-02-16
 tags:
-    - notes
+    - 管理学
 ---
+
+# {{ $frontmatter.title }}
 
 ### SaaS的理解
 
@@ -39,10 +41,10 @@ CoE (Center of expertise) + BP (Business Partner) + SSC (shared service center).
 
 
 For infrastructure layer, it could be:
-● Infra CoE -> Experienced SRE team (Now ZCP committee involved teams)
-● Infra BP -> App Ops/SRE teams of each product or business
-● Infra SSC -> The ZCP product, the automated self-service for DevOps stakeholders.
+- Infra CoE -> Experienced SRE team (Now ZCP committee involved teams)
+- Infra BP -> App Ops/SRE teams of each product or business
+- Infra SSC -> The ZCP product, the automated self-service for DevOps stakeholders.
 
-![alt text](image.png)
+![](/img/3-pillar.png)
 
 SaaS的本质：**一种由领域专家构建的、持续迭代的、能够让用户自助服务的软件系统**。

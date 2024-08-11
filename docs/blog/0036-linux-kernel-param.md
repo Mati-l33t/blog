@@ -2,9 +2,10 @@
 title:      "[DevOps] Linux内核参数优化及原理"
 date:       2020-01-22
 tags:
-    - linux
-    - kernel
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 ## 引言
 

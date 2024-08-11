@@ -1,10 +1,12 @@
 ---
-title:      "[ElasticStack] ES索引生命周期管理"
+title:      "ElasticSearch索引生命周期管理"
 date:       2019-06-05
 tags:
-    - elasticsearch
-    - filebeat
+    - 分布式系统
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 ## 缘起
 

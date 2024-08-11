@@ -14,6 +14,10 @@
 
 }
 
+.vp-doc p, .vp-doc li {
+  line-height: 1.8em!important;
+}
+
 pre,
 code {
   font-family: var(--vp-font-family-mono) !important;
@@ -97,7 +101,7 @@ code {
   margin: 0 auto;
   border-radius: 8px;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  
 }
 
 .vp-doc :not(pre)>code {
@@ -110,12 +114,16 @@ code {
 .vp-doc a:not(.header-anchor) {
   color: var(--vp-c-brand);
   text-decoration: none;
-  border-bottom: solid 2px var(--vp-c-brand);
+  border-bottom: solid 1px var(--vp-c-brand);
 }
 
 .vp-doc a:hover:not(.header-anchor) {
   color: var(--vp-c-brand-dark);
-  border-bottom: solid 2px var(--vp-c-brand-dark);
+  border-bottom: solid 1px var(--vp-c-brand-dark);
+}
+
+.vp-doc blockquote > p {
+  color: #2c1f36a5!important;
 }
 
 /* Scrollbar Style */
@@ -148,6 +156,18 @@ progress::-webkit-progress-value{
 }
 ::selection {
   background: var(--my-blue-dark);
+}
+
+.blog-tag {
+  cursor: pointer;
+  font-weight: 400!important;
+  font-size: 14px;
+  margin: 4px 8px;
+  color: var(--my-white);
+  border-radius: 6px;
+  opacity: 90%;
+  background-color:rgb(211, 226, 251);
+  padding: 4px 8px;
 }
 
 .paperOverlay {

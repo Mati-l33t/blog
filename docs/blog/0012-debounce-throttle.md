@@ -1,10 +1,11 @@
 ---
-title:      "[JavaScript 笔记] 函数节流和去抖"
+title:      "JavaScript函数节流和去抖"
 date:       2018-01-12
 tags:
-    - JavaScript
-    - 前端
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 ## 概念
 #### 函数节流 throttle

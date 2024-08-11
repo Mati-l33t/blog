@@ -11,7 +11,7 @@ const items = [
         title: "Spring Boot Dynamic Config",
         date: "2021",
         highlights: "200+ stars, running in production stably for years",
-        description: "The lightweight dynamic config solution for Spring Boot apps. Supported all Spring Boot versions above 2.x. Can be used along with Kubernetes ConfigMap or standalone way",
+        description: "Made the lightweight dynamic config solution for Spring Boot apps. Supported all Spring Boot versions above 2.x. Can be used along with Kubernetes ConfigMap or standalone way",
         github: 'https://github.com/code2life/spring-boot-dynamic-config',
         techStacks: ["java", "kubernetes"],
         details: [],
@@ -26,10 +26,10 @@ const items = [
     tag: 'Work at Zoom',
     list: [
     {
-        title: 'IDP & CD Platform',
+        title: 'CD & Internal Developer Platform',
         date: "2022-2024",
         highlights: "Founder, leader, PM, architect. Significantly increased DevEX and operation efficiency throughout the organization.",
-        description: 'The Internal Developer Platform and Continuous Deployment Platform at Zoom. Adopted by more than 90% of services, played the major role in platform engineering and containerization.',
+        description: 'Built the Continuous Deployment and Internal Developer Platform at Zoom. Adopted by more than 90% of services, played the major role in platform engineering and containerization.',
         techStacks: ["typescript", "golang", "rust", "react", "java"],
         details: [
           "As team leader & PM & UX designer, drove the overall PaaS development lifecycle, coordinated cross-functional teams from 6 timezones, wrote PRD and UX prototypes",
@@ -42,12 +42,12 @@ const items = [
         title: 'Microservice Framework',
         date: "2019-2021",
         highlights: "Co-founder, architect. The framework has been adopted by 90+ new services.",
-        description: 'Microservice framework based on Spring Boot, Spring Cloud and existing internal SDKs and middlewares, split the monolithic service to resolve development efficiency problems',
+        description: 'Built micro-service development framework based on Spring Boot, Spring Cloud and existing internal SDKs and middlewares, split the monolithic to resolve development efficiency problems.',
         details: [
           "Extracted and refactored the calendar integration service from the monolithic service, which is a critical service serving 2000+ requests per second",
           "Created a heterogeneous data comparing and reconciling tool to resolve data inconsistency issues during micro-service migration",
           "Made a boilerplate generator and doc site for the new framework, spread the framework to 90+ new services",
-          "Built the microservice monitor and operation solution with Kubernetes, Prometheus, Helm etc.",
+          "Built end-to-end microservice monitor and operation solution with Kubernetes, Prometheus, Helm etc.",
         ],
         techStacks: ["java", "golang", "kubernetes"],
       },

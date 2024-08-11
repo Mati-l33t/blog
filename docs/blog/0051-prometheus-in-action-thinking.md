@@ -2,10 +2,10 @@
 title:      "[DevOps] Prometheus监控告警——总结与思考"
 date:       2020-02-25
 tags:
-    - prometheus
-    - alert
-    - monitor
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 ### 目录
 - [Prometheus监控告警——基础篇](/blog/0048-prometheus-in-action-start) 

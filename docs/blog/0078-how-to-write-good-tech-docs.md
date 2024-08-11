@@ -1,10 +1,11 @@
 ---
-title:      "[随笔] 如何写出高质量的技术文档?"
+title:      "如何写出高质量的技术文档?"
 date:       2024-03-11
 tags:
-    - notes
-    - Software Engineering
+    - 软件设计
 ---
+
+# {{ $frontmatter.title }}
 
 ## 好文档是核心竞争力
 

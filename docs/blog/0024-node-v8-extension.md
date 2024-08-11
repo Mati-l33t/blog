@@ -2,10 +2,10 @@
 title:      "[Node.js进阶] 使用Node.js V8 API编写C++扩展"
 date:       2018-04-17
 tags:
-    - node.js
-    - C++
-    - v8
+    - JS/TS
 ---
+
+# {{ $frontmatter.title }}
 
 > 2020年更新：这篇是传统的NodeJS Addon开发方式，现在Node.js还提供了N-API的能力，屏蔽了V8这一层，对Addon开发更加友好了，新项目建议直接上N-API。
 
@@ -13,7 +13,7 @@ tags:
 Node.js本身已经提供了非常多跨平台的能力, 但对于一些特殊的场景仍不能满足需求. 比如: 
 - 需要调用特定平台上的API
 - 集成某些已有的C/C++编写的动态/静态库
-- 有高性能需求或需要使用多线程特性的功能等.   
+- 有高性能需求或需要使用多线程特性的功能等.
 
 对于这些场景, Node.js也提供了基于V8引擎的扩展能力. 但这种能力的扩展过于依赖V8引擎, 现在Node.js已经开始试验性的提供**[N-API](https://nodejs.org/dist/latest-v8.x/docs/api/n-api.html)**的方式来进行C++扩展, 以此来**屏蔽不同版本的Node.js、不同Js引擎的差异**. 关于原生C++扩展的开发方式的变化, [这里](//weixin.niurenqushi.com/article/2017-06-26/4925408.html)有一篇很不错的文章.  
 

@@ -57,9 +57,10 @@ const generateCopyright = () => {
             class="italic text-[--vp-c-brand-1] transition duration-300 hover:text-[--vp-c-brand-2]"
             href="mailto:code2life@ustc.edu"
             target="_blank"
-            >Code2Life</a
-          >
+            >Code2Life</a>
         </span>
+        &nbsp;&nbsp;
+        <a href="https://beian.miit.gov.cn" target="_blank">网站备案编号：皖ICP备18004921号</a>
       </p>
     </div>
   </footer>

@@ -22,7 +22,7 @@ const { Layout } = DefaultTheme
       <Message />
     </template>
     <template #layout-bottom>
-      <div class="paperOverlay">asdfg</div>
+      <div class="paperOverlay"></div>
     </template>
   </Layout>
 </template>

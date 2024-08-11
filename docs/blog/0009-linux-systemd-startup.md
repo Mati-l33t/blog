@@ -2,9 +2,10 @@
 title:      "[Linux入门] Systemd与开机自启动"
 date:       2017-12-16
 tags:
-    - Linux
-    - systemd
+    - DevOps
 ---
+
+# {{ $frontmatter.title }}
 
 ## systemd简介
 >systemd即为system daemon,是linux下的一种init软件, 目标是提供更优秀的框架以表示系统服务间的依赖关系, 并依此实现系统初始化时服务的并行启动, 同时达到降低Shell的系统开销的效果, 最终代替现在常用的System V与BSD风格init程序. 由于systemd使用了cgroup与fanotify等组件以实现其特性, 所以只适用于Linux. 

@@ -2,8 +2,10 @@
 title:      "毕业4年的程序猿，竟然去考研了"
 date:       2021-01-01
 tags:
-    - exam
+    - Others
 ---
+
+# {{ $frontmatter.title }}
 
 ## 12月26日发生了什么？
 

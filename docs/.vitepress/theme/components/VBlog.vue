@@ -1,28 +1,26 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
-import { data as groupedPosts, type Post } from '../utils/blog.data'
+import { data, type Post } from '../utils/blog.data'
 
-const allTags = {} as Record<string, Post[]>
-for (const key in groupedPosts) {
-  if (!groupedPosts[key]) {
-    continue
-  }
-  for(const post of groupedPosts[key]) {
-    post.tags.forEach(t => {
-      allTags[t] ??= []
-      allTags[t].push(post)
-    })
+const tagFilter = new URL(location.href).searchParams.get("tag")
+const groupedPosts = {} as Record<string, Post[]>
+for(const year in data) {
+  const filtered = data[year]?.filter(p => !tagFilter || p.tags.includes(tagFilter))
+  if (filtered && filtered.length > 0) {
+    groupedPosts[year] = filtered
   }
 }
+const allYears = Object.keys(groupedPosts).reverse()
 
 const formatDate = (raw: string): string => {
   const date = new Date(raw)
   return date.toLocaleDateString('en-US', {
     month: 'short',
-    day: 'numeric',
+    day: '2-digit',
   })
 }
+
 </script>
 
 <template>
@@ -33,21 +31,32 @@ const formatDate = (raw: string): string => {
         <Icon class="inline text-[--vp-c-brand-1]" aria-hidden="true" icon="tabler:book-2" />
       </h1>
     </section>
-    <template v-for="year in Object.keys(groupedPosts).reverse()" :key="year">
+    <div v-if="tagFilter" class="mt-8">
+      <span style="font-weight: 500;">Filtered by Tag:</span> <a class="blog-tag" id="clean-filter" href="/blog">{{ tagFilter }}</a>
+    </div>
+    
+    <template v-for="year in allYears" :key="year">
       <h2>{{ year }}</h2>
       <ul>
         <li v-for="post of groupedPosts[year]" :key="post.url">
           <article>
-            <a :href="post.url" class="border-none">{{ post.title }}</a> -
-            <dl class="m-0 inline">
-              <dt class="sr-only">Published on</dt>
-              <dd class="m-0 inline">
-                <time :datetime="post.date">{{ formatDate(post.date) }}</time>
-              </dd>
-            </dl>
-          </article>
+          <a style="margin-right: 4px;" :href="post.url" class="border-none">
+            {{ formatDate(post.date) }}&nbsp;&nbsp;
+
+            {{ post.title }}
+          </a>
+          
+          <a class="blog-tag" style="border-bottom: none;" v-for="tag in post.tags" :key="tag" :href="`/blog?tag=${encodeURIComponent(tag)}`">{{ tag }}</a>
+        </article>
         </li>
       </ul>
     </template>
   </div>
 </template>
+
+<style lang="css">
+#clean-filter:hover::after {
+  content: " click to clear filter";
+  color: brown;
+}
+</style>

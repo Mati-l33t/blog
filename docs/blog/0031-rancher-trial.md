@@ -1,10 +1,12 @@
 ---
-title:      "[分布式专题] DevOps平台Rancher试用笔记"
+title:      "DevOps平台Rancher试用笔记"
 date:       2018-10-16
 tags:
-    - rancher
-    - kubernetes
+    - DevOps
+    - Kubernetes
 ---
+
+# {{ $frontmatter.title }}
 
 > 2020年更新，Rancher版本迭代比较快，删改了部分内容，移步我的知乎专栏文章：https://zhuanlan.zhihu.com/p/184654439
 

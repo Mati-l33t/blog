@@ -1,10 +1,11 @@
 ---
-title:      "[C# 杂货] 读取XML的三种方式"
+title:      "C# 读取XML的三种方式"
 date:       2018-01-15
 tags:
     - C#
-    - xml
 ---
+
+# {{ $frontmatter.title }}
 
 ## 两种读写模型
 #### DOM模型

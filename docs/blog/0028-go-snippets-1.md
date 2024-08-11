@@ -1,10 +1,11 @@
 ---
-title:    "[Golang学习笔记] 代码片段记录-入门级日常开发"
+title:    "[Golang学习笔记] 代码片段记录-入门级开发"
 date:     2018-08-01
 tags:
   - Golang
-  - Snippets
 ---
+
+# {{ $frontmatter.title }}
 
 ## 引言  
 最近迷上了Go语言, 看完《The Go Programming Language》后收益颇丰。作为一个**极其懒惰**的程序猿, 我比较认同Golang提倡的"Less is more"的哲学, 而且Golang确实是一门非常有意思的语言, 集众家之长而又标新立异. 本系列记录一下在学习实践Go语言过程中使用到的一些代码片段，边学边记， **不仅限于标准库, 还包括真正开发过程中常用的各类组件的用法**。
