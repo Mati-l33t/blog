@@ -7,7 +7,7 @@ for (const key in groupedPosts) {
   if (!groupedPosts[key]) {
     continue
   }
-  for(const post of groupedPosts[key]) {
+  for(const post of groupedPosts[key]!) {
     post.tags.forEach(t => {
       allTags[t] ??= 0
       allTags[t]++

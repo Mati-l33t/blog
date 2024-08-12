@@ -17,10 +17,10 @@ for (const key in data) {
   if (!data[key]) {
     continue
   }
-  for(const post of data[key]) {
+  for(const post of data[key]!) {
     post.tags.forEach(t => {
       allTags[t] ??= []
-      allTags[t].push(post)
+      allTags[t]!.push(post)
     })
   }
 }
