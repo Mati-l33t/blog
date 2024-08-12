@@ -10,18 +10,19 @@ tags:
 
 # {{ $frontmatter.title }}
 
-- [Temporal简介](#temporal简介)
-    - [编排的本质是什么？](#编排的本质是什么)
-    - [Temporal关键概念](#temporal关键概念)
-- [5分钟上手Temporal](#5分钟上手temporal)
-    - [搭环境](#搭环境)
-    - [写代码](#写代码)
-- [实践与思考](#实践与思考)
-    - [实践历程](#实践历程)
-    - [使用关键注意点](#使用关键注意点)
-    - [亮点和局限性](#亮点和局限性)
-    - [总结](#总结)
-    - [学习参考](#学习参考)
+- [{{ $frontmatter.title }}](#-frontmattertitle-)
+  - [Temporal简介](#temporal简介)
+      - [编排的本质是什么？](#编排的本质是什么)
+      - [Temporal关键概念](#temporal关键概念)
+  - [5分钟上手Temporal](#5分钟上手temporal)
+      - [搭环境](#搭环境)
+      - [写代码](#写代码)
+  - [实践与思考](#实践与思考)
+      - [实践历程](#实践历程)
+      - [使用关键注意点](#使用关键注意点)
+      - [亮点和局限性](#亮点和局限性)
+      - [总结](#总结)
+      - [学习参考](#学习参考)
 
 ## Temporal简介
 
@@ -408,7 +409,7 @@ Temporal的3个关键特性，可中断、可恢复、响应式，正好是3个�
 
 我惊叹于其设计精妙时，也好奇是谁创造了这个项目呢？原来Temporal的核心创始人之一Maxim Fateev，有超过15年消息队列和工作流平台的积累，领导了AWS SQS, Azure Service Bus, Azure Durable Functions, Uber Cherami、Cadence项目。
 
-Maxim Fateev和Samar Abbas[2019年出来创业](https://temporal.io/about)，在2022年初Temporal已经是估值[**15亿美元**]((https://www.geekwire.com/2022/temporal-is-a-unicorn-developer-productivity-startup-lands-120m-at-1-5b-valuation/))的独角兽企业。Temporal的商业模式果然也是云服务，走Cloud的SaaS模式。基于一个纯开源的工作流引擎的公司，能给到这么高的估值，足以说明背后硅谷投资人的技术视野和基金实力。
+Maxim Fateev和Samar Abbas[2019年出来创业](https://temporal.io/about)，在2022年初Temporal已经是估值[**15亿美元**](https://www.geekwire.com/2022/temporal-is-a-unicorn-developer-productivity-startup-lands-120m-at-1-5b-valuation/)的独角兽企业。Temporal的商业模式果然也是云服务，走Cloud的SaaS模式。基于一个纯开源的工作流引擎的公司，能给到这么高的估值，足以说明背后硅谷投资人的技术视野和基金实力。
 
 #### 学习参考
 

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-
 import { data, type Post } from '../utils/blog.data'
 
-const tagFilter = new URL(location.href).searchParams.get("tag")
+const tagFilter = new URL(window.location.href).searchParams.get("tag")
 const groupedPosts = {} as Record<string, Post[]>
 for(const year in data) {
   const filtered = data[year]?.filter(p => !tagFilter || p.tags.includes(tagFilter))

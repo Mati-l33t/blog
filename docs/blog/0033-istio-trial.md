@@ -297,7 +297,7 @@ kubectl apply -f virtual-service-all-v1.yaml
 #virtualservice.networking.istio.io/details created
 ```
 
-现在可以试着从浏览器访问**//<node-ip>:<NodePort>/productpage**即可看到BookInfo应用的页面，在此之前需要先找下IngressGateway的外部访问入口：
+现在可以试着从浏览器访问**//\<node-ip\>:\<NodePort\>/productpage**即可看到BookInfo应用的页面，在此之前需要先找下IngressGateway的外部访问入口：
 ```bash
 # Step1. 查看K8S集群物理机/虚拟机边缘节点的真实IP
 minikube ip
@@ -361,7 +361,7 @@ spec:
           number: 20001
 ```
 
-浏览器访问**//<node-ip>:30294/kiali**, 默认用户名密码都是admin，可以看到Kiali Dashboard，其中**Service Graph**的功能相当惊艳，能够**实时监控整个微服务系统的流量**，比1.0版本之前的/servicegraph页面强大很多。
+浏览器访问**//\<node-ip\>:30294/kiali**, 默认用户名密码都是admin，可以看到Kiali Dashboard，其中**Service Graph**的功能相当惊艳，能够**实时监控整个微服务系统的流量**，比1.0版本之前的/servicegraph页面强大很多。
 
 ![](//filecdn.code2life.top/kiali-service-graph.png)
 

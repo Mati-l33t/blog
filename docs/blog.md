@@ -10,4 +10,6 @@ progress: false
 import Blog from '.vitepress/theme/components/VBlog.vue'
 </script>
 
-<Blog />
+<ClientOnly>
+    <Blog />
+</ClientOnly>

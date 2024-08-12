@@ -86,7 +86,7 @@ lighthouse //xxx.xx
   
 ## 前端框架篇
 #### jQuery性能优化
-jQuery虽然已经随着技术的变更逐渐被人遗忘, 但作为笔者进入前端界的启蒙框架, 还是来回忆一下jQuery代码的正确编写姿势吧. 部分内容摘自[此处]((//www.jb51.net/article/47639.htm))
+jQuery虽然已经随着技术的变更逐渐被人遗忘, 但作为笔者进入前端界的启蒙框架, 还是来回忆一下jQuery代码的正确编写姿势吧. 部分内容摘自[此处](https://www.jb51.net/article/47639.htm)
 - jQuery很多API是针对DOM的操作, 但仍需减少DOM操作, 如append, before, after等函数不要每拼接一个DOM元素字符串调一次, 放在一起调
 - 可以适当使用原生JS实现的不要用jQuery, 比如$(this).attr("id")可以优化成this.id
 - jQuery选择器的优化也很重要, 不要写过于复杂的选择器, 与CSS选择器可以类比

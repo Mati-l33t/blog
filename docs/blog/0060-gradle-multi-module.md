@@ -9,7 +9,7 @@ tags:
 
 由于项目需要，我最近学习了一点关于Gradle的**入门知识**，本篇以一个**含有多个子项目的Java SpringBoot工程**为例，总结分享一下**Gradle的基本原理和正确使用方式**。
 
-写这篇文章，主要因为网上查阅到的Gradle相关博客和中文文档**几乎都已经过时**了，Gradle官方文档很靠谱但是是英文的，我读了一些文档，结合自己的理解尽量写的深入浅出一些，适合Java开发看。但是要系统学习Gradle还得看[官方文档]([https://docs.gradle.org/current/userguide/getting_started.html])。
+写这篇文章，主要因为网上查阅到的Gradle相关博客和中文文档**几乎都已经过时**了，Gradle官方文档很靠谱但是是英文的，我读了一些文档，结合自己的理解尽量写的深入浅出一些，适合Java开发看。但是要系统学习Gradle还得看[官方文档](https://docs.gradle.org/current/userguide/getting_started.html)。
 
 ## Gradle从陌生到入门七问
 
