@@ -5,7 +5,7 @@ tags:
     - JS/TS
 ---
 
-# {{ $frontmatter.title }}
+# ES6的变化与新特性(上篇)
 
 ## Part1. 变量声明与作用域的变化  
 

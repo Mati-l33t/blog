@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { data, type Post } from '../utils/blog.data'
+import { useRouter } from "vitepress"
 
+const router = useRouter()
 const tagFilter = new URL(window.location.href).searchParams.get("tag")
 const groupedPosts = {} as Record<string, Post[]>
 for(const year in data) {
@@ -20,6 +22,18 @@ const formatDate = (raw: string): string => {
   })
 }
 
+function filterTag(tag?: string) {
+  if (!tag) {
+    router.go(`/blog`)  
+  } else {
+    router.go(`/blog?tag=${encodeURIComponent(tag)}`)
+  }
+  setTimeout(() => {
+    location.reload()
+  }, 20)
+  
+}
+
 </script>
 
 <template>
@@ -31,7 +45,7 @@ const formatDate = (raw: string): string => {
       </h1>
     </section>
     <div v-if="tagFilter" class="mt-8">
-      <span style="font-weight: 500;">Filtered by Tag:</span> <a class="blog-tag" id="clean-filter" href="/blog">{{ tagFilter }}</a>
+      <span style="font-weight: 500;">Filtered by Tag:</span> <a class="blog-tag" id="clean-filter" @click="filterTag()">{{ tagFilter }}</a>
     </div>
     
     <template v-for="year in allYears" :key="year">
@@ -45,7 +59,7 @@ const formatDate = (raw: string): string => {
             {{ post.title }}
           </a>
           
-          <a class="blog-tag" style="border-bottom: none;" v-for="tag in post.tags" :key="tag" :href="`/blog?tag=${encodeURIComponent(tag)}`">{{ tag }}</a>
+          <a class="blog-tag" style="border-bottom: none;" v-for="tag in post.tags" :key="tag" @click="filterTag(tag)">{{ tag }}</a>
         </article>
         </li>
       </ul>

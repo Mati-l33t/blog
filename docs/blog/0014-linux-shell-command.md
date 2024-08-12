@@ -5,7 +5,7 @@ tags:
     - DevOps
 ---
 
-# {{ $frontmatter.title }}
+# [Linux入门] 常用命令和Vim操作汇总
 
 > 本文收录一些常用的linux运维命令和基础知识, 持续更新, 不常用的命令和参数自行用man命令查阅或在此[网址://man.linuxde.net/](//man.linuxde.net/)下查询
 

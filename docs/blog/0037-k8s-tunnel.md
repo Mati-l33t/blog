@@ -6,7 +6,7 @@ tags:
     - DevOps
 ---
 
-# {{ $frontmatter.title }}
+# [DevOps] 打通Kubernetes内网和局域网的N种方法
 
 由于Kubernetes集群会使用CNI插件创建Pod/Service内部子网，外面一般无法访问内部IP和域名，给开发、测试、 联调带来了很大的麻烦，因此打通开发测试环境Kubernetes集群内部子网和办公室的局域网、实现互联互通是经常遇到的问题。
 

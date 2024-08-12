@@ -5,7 +5,7 @@ tags:
     - Java
 ---
 
-# {{ $frontmatter.title }}
+# Spring Events泛型使用方法
 
 ## 引言
 

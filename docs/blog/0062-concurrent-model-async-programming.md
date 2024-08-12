@@ -6,7 +6,7 @@ tags:
     - 分布式系统
 ---
 
-# {{ $frontmatter.title }}
+# 白话并发模型和异步编程范式
 
 ![](https://filecdn.code2life.top/blog/%2A%2Alangs-influence.png)
 

@@ -5,7 +5,7 @@ tags:
     - JS/TS
 ---
 
-# {{ $frontmatter.title }}
+# [Node.js进阶] 子进程与Cluster
 
 node.js的官方文档非常详细, 这里概括性的整理一些常用的和重要的地方, 完整的方法、参数等还是要参考[官方文档](//nodejs.cn/api/). 另外, 本文还记录一个基于cluster模块封装的生产环境上必备的守护进程模块[pm2](https://github.com/Unitech/pm2)的使用
 

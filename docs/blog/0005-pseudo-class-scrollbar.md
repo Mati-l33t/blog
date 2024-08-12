@@ -5,7 +5,7 @@ tags:
     - JS/TS
 ---
 
-# {{ $frontmatter.title }}
+# 伪元素实现自定义滚动条
 
 <h2 id="从伪类和伪元素说起"><a href="#从伪类和伪元素说起" class="headerlink" title="从伪类和伪元素说起"></a>从伪类和伪元素说起</h2><blockquote>
 <p>CSS3中规定:伪类(Pseodu-classes)用<span style="color: #ff0000;">一个冒号</span>来表示，而伪元素(Pseodu-elements)则用<span style="color: #ff0000;">两个冒号</span>来表示.(低版本IE不支持单冒号)<br><strong>区别 :</strong> 伪类的效果可以通过添加一个实际的<span style="color: #ff0000;">类</span>来达到，而伪元素的效果则需要通过添加一个实际的<span style="color: #ff0000;">元素</span>才能达到, 伪元素无法使用DOM操作控制, 而伪元素能实现的功能基本可以使用实元素实现, 一般情况下尽量不要使用, 增加了维护的难度.</p>

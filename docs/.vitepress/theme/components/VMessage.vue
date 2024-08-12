@@ -15,6 +15,15 @@ for (const key in groupedPosts) {
   }
 }
 
+function filterTag(tag: string) {
+  if(location.href.startsWith('/blog')) {
+    setTimeout(() => {
+      location.reload()
+    }, 20)
+  } 
+  location.href = `/blog?tag=${encodeURIComponent(tag)}`
+}
+
 </script>
 
 <template>
@@ -24,8 +33,8 @@ for (const key in groupedPosts) {
       <a
         v-for="(item, val) in allTags"
         :key="item"
-        class="flex items-center gap-1.5 hover:text-[--vp-c-text-1]"
-        :href="`/blog?tag=${encodeURIComponent(val)}`"
+        class="flex items-center gap-1.5 hover:text-[--vp-c-text-1] cursor-pointer"
+        @click="filterTag(val)"
       >
         {{ val }} ({{ item }})
       </a>

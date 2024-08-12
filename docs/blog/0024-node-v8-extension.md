@@ -5,7 +5,7 @@ tags:
     - JS/TS
 ---
 
-# {{ $frontmatter.title }}
+# [Node.js进阶] 使用Node.js V8 API编写C++扩展
 
 > 2020年更新：这篇是传统的NodeJS Addon开发方式，现在Node.js还提供了N-API的能力，屏蔽了V8这一层，对Addon开发更加友好了，新项目建议直接上N-API。
 

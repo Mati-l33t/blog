@@ -5,7 +5,7 @@ const recentBlogs = [] as Post[]
 let cnt = 0
 const allYears = Object.keys(data).reverse()
 for (const year of allYears) {
-  for (const post of data[year]) {
+  for (const post of data[year]!) {
     if (cnt++ < 5) {
       recentBlogs.push(post)
     }

@@ -5,7 +5,7 @@ tags:
     - JS/TS
 ---
 
-# {{ $frontmatter.title }}
+# JavaScript函数节流和去抖
 
 ## 概念
 #### 函数节流 throttle

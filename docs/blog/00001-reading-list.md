@@ -5,7 +5,7 @@ tags:
     - Others
 ---
 
-# {{ $frontmatter.title }}
+# Joey的书单
 
 记录曾经读过的值得推荐的好书和一句话书评。
 

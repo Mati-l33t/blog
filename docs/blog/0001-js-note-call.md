@@ -5,8 +5,7 @@ tags:
     - JS/TS
 ---
 
-# {{ $frontmatter.title }}
-
+# this call apply的用法总结
 
 
 ### this的特性与用法

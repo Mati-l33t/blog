@@ -5,7 +5,7 @@ tags:
     - DevOps
 ---
 
-# {{ $frontmatter.title }}
+# [DevOps] 3分钟给Nginx开启HTTPS与HTTP2
 
 由于种种不可抗力以及晚期懒癌的影响，很久没更新博客了，这篇也偷个懒写一篇没什么营养，但很实用的小技巧
 

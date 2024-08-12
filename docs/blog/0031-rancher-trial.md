@@ -6,7 +6,7 @@ tags:
     - Kubernetes
 ---
 
-# {{ $frontmatter.title }}
+# DevOps平台Rancher试用笔记
 
 > 2020年更新，Rancher版本迭代比较快，删改了部分内容，移步我的知乎专栏文章：https://zhuanlan.zhihu.com/p/184654439
 

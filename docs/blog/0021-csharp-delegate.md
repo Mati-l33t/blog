@@ -5,7 +5,7 @@ tags:
     - C#
 ---
 
-# {{ $frontmatter.title }}
+# C# Delegate详解
 
 ## Delegate的定义及作用
 #### Delegate是什么

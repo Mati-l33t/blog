@@ -9,7 +9,7 @@ export default defineConfig({
   description: 'Joey Yang (Code2Life)\'s blog site',
   lastUpdated: false,
   cleanUrls: true,
-  // appearance: 'force-light',
+  appearance: false,
   markdown: {
     lineNumbers: true,
   },
@@ -34,9 +34,9 @@ export default defineConfig({
     // https://html.spec.whatwg.org/multipage/semantics.html#meta-theme-color
     ['meta', { name: 'theme-color', content: '#13212e' }],
     // https://html.spec.whatwg.org/multipage/semantics.html#meta-color-scheme
-    ['meta', { name: 'color-scheme', content: 'light dark' }],
+    ['meta', { name: 'color-scheme', content: 'light' }],
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    // ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     /* Number font: Montserrat, Letter font: Raleway, Code font: JetBrains Mono
        Raleway font has ugly number, so use Montserrat for number. */
     // [
@@ -60,14 +60,14 @@ export default defineConfig({
     //     src: 'https://www.googletagmanager.com/gtag/js?id=G-TJQVDW3EZK',
     //   },
     // ],
-    [
-      'script',
-      {},
-      `window.dataLayer = window.dataLayer || [];
-       function gtag(){ dataLayer.push(arguments); }
-       gtag('js', new Date());
-       gtag('config', 'G-TJQVDW3EZK');`,
-    ],
+    // [
+    //   'script',
+    //   {},
+    //   `window.dataLayer = window.dataLayer || [];
+    //    function gtag(){ dataLayer.push(arguments); }
+    //    gtag('js', new Date());
+    //    gtag('config', 'G-TJQVDW3EZK');`,
+    // ],
   ],
   themeConfig: {
     logo: '/logo.png',
