@@ -18,7 +18,7 @@ Hey there, I'm Joey Yang, a full-stack engineer, lifelong learner, NJU & USTC gr
 
 My career goal is to build awesome SaaS products that can help people in scalable way.
 
-In the real world, I'm living in China, plan to be a global citizen. In my leisure time, I enjoy reading all kinds of books, badminton and table tennis.
+In the real world, I'm living in China, plan to be a global citizen. In my leisure time, I enjoy reading all kinds of books, playing badminton and table tennis.
 
 <h2>Recent Posts 📙</h2>
 <RecentBlog />
