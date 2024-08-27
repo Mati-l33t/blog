@@ -1,6 +1,6 @@
 ---
 title:      "如何写出高质量的技术文档?"
-date:       2024-03-11
+date:       2024-07-11
 tags:
     - 软件设计
 ---
@@ -146,7 +146,7 @@ Overview既能让用户**快速获得全局理解**，又能作为**关键索引
 
 除了**文档功能化**，另一个方案是开发Playground，作为产品的一部分。Playground或者更复杂一些的Hands-on Lab，不仅可以作为产品**端到端测试的载体**，更大的意义是**提升用户尝试的信心、降低学习门槛**。比如[Cloudflare Workers Playground](https://workers.cloudflare.com/playground)，体验过的都会被震惊到。
 
-TBD pic
+![](https://filecdn.code2life.top/2024_08_27_fc7f2fe816097efefb700e26da52e8cc66f082eee1b8747024602853b69ddfef.png)
 
 🚀行动建议9：对于**学习曲线较陡、或操作风险较高的功能**，开发**可交互的Playground**，把Tutorial内容维护在Playground中，也要在产品对应的功能中加上Playground的链接。如果有条件，买个[Instruqt](https://instruqt.com/)这类专门做Hands-on lab的服务，把Playground体验拉满；甚至还可以搭配[Skill Jar](https://www.skilljar.com)这类TMS产品，构建一个在线的“XX学院”，能跟踪用户的学习进度、还能用证书奖励促进学习动机。
 
@@ -162,7 +162,9 @@ Roadmap是为了提升产品研发的透明度、给用户适当的预期、甚�
 
 可以发现，这类内容不涉及技术细节，但对**内容吸引力、订阅群体管理、用户反馈**的要求非常高。因此，要有一个专门的SaaS来管理这些内容，提供**用户管理、内容营销**的工作流闭环，这几种内容的深层含义，远比“定期写个文档丢到网站上”要复杂。
 
-🚀行动建议10：不要把Roadmap和Release Notes放到文档站点中，它们不是技术文档，而是另一类需要**独立解决的问题**。有个特例是，非兼容版本更新产生的**Migration Guides**，这属于**How-to Guides**的一种，应该放到文档站点。TBD：示例SaaS产品、管理Roadmap和Release Notes的。
+🚀行动建议10：不要把Roadmap和Release Notes放到文档站点中，它们不是技术文档，而是一类需要**独立解决的客户沟通问题**，市面上有很多产品可以选，比如：[Canny](https://canny.io/)、[Changelogfy](https://changelogfy.com/)、[ReleaseNotes.io](https://www.releasenotes.io/)、[FeatureOS](https://featureos.app/)。但有个特例是，非兼容版本更新产生的**Migration Guides**，属于**How-to Guides**的一种，应该放到文档站点。
+
+![](https://filecdn.code2life.top/2024_08_27_d4429d6b5ab02917d2508b97b7f2224c7d23faeabc32db2bc137aedf252417e9.png)
 
 而Ecosystem/Integrations这些文档内容，背后的含义是什么呢？
 
@@ -170,15 +172,20 @@ Roadmap是为了提升产品研发的透明度、给用户适当的预期、甚�
 
 简单的方案是，每当生态中增加一个Integration，就手动维护到主文档站点里面。但这样没有解耦**产品维护者**和**生态贡献者**，不符合关注点分离原则。因此，更好的做法是，构建一个Marketplace的数据库管理Integrations，扩展点开发者把**文档和代码打包到一起**，每次修改发布到Marketplace。
 
-下面两个图，一个是Prometheus的Integrations、一个是Sanity的Integrations，哪个更好一目了然。
+下面两张图，左边是Prometheus的Integrations、右边是Sanity的Integrations，哪个更好一目了然。
 
-TBD pic
+![](https://filecdn.code2life.top/2024_08_27_ae13f8059d4daef14df070bd74a447dc2ee36999ec255648fe70fbb143303a2d.png)
 
-🚀行动建议11：除了产品的技术文档本身，其他内容一概不应该放在文档站点维护。找一个类似[Sanity](https://sanity.io)的**结构化CMS**来管理Integrations、Teams、Products这些内容，不要直接放到产品文档里，而是作为补充资源的链接。
+🚀行动建议11：除了产品的技术文档本身，其他内容一概不应该在文档中维护。找一个类似[Sanity](https://sanity.io)的**结构化CMS**来管理Integrations、Teams、Products这些内容，不要直接放到产品文档里，这些都应该是Header或Footer中的资源链接。
 
 ## 写好技术文档的7条原则
 
-有了对信息架构的理解，我们再看具体怎么写。这里介绍7条**技术文档的写作原则**，一部分内容来自布兰德·罗伊尔的《一本小小的红色写作书》，这里取其精华、延伸思考，再结合我的实践，给出行动建议。
+有了对信息架构的理解，我们再看具体怎么写。这里介绍7条**技术文档的写作原则**，一部分内容来自布兰德·罗伊尔的《一本小小的红色写作书》。
+
+
+![](https://filecdn.code2life.top/2024_08_27_dd7bb4697753bd07119069b6aa96a0ea5dc7e694366ca7b489ba7255d362a8bf.png)
+
+这里取其精华、再结合我的实践和延伸思考，总结了7条技术文档写作的核心原则，以及相应的行动建议。
 
 1. “面对面”原则
 2. 零知识假设原则
@@ -187,8 +194,6 @@ TBD pic
 5. 结构化优先原则
 6. 多媒体优先原则
 7. 迭代原则
-
-TBD pic book
 
 ### 1. “面对面”原则
 
@@ -212,7 +217,7 @@ TBD pic book
 
 🚀行动建议14：以TL;DR（Too long, don't read）风格开头，先写塔尖的全文总结、再往塔底下展开详细内容，确保**只读了第一段的用户，也能了解全文大意**。
 
-TBD pic pyramid
+![](https://filecdn.code2life.top/2024_08_27_fe204159b9381bd618d7920cbb95ace6f3c40c33a6dda3a40e2f77858b6944dc.png)
 
 ### 4. “海明威”原则
 
@@ -243,9 +248,9 @@ Input is markdown. Output should be 4 parts:
 - 复杂的多维度信息，别用大片文字描述，直接上表格；
 - 用来支持结论的分析类信息、尤其是数字、矩阵、时序相关的，选择恰当的图表。
 
-🚀行动建议16：找一些写过的文档，尝试把**三分之一以上**的内容全部改成列表、表格、图表。Markdown图表表格语法不熟练的话，用[Mermaid](https://mermaid.live/)、[TableConvert](http://tableconvert.com/markdown-to-markdown) 这类工具先练一练，再装上这个 [Markdown Table VSCode插件](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable)辅助表格编辑和格式化。
+🚀行动建议16：找一些写过的文档，尝试把**三分之一以上**的内容全部改成列表、表格、图表。Markdown图表表格语法不熟练的话，用[Mermaid](https://mermaid.live/)、[TableConvert](http://tableconvert.com/markdown-to-markdown) 这类工具先练一练。
 
-TBD mermaid pic
+![](https://filecdn.code2life.top/2024_08_27_b8b1d74ffef86368d6b0774b1ce1eeec66af33b9667153eb41f8793209a9f823.png)
 
 ### 6. 多媒体优先原则
 
@@ -253,9 +258,9 @@ TBD mermaid pic
 
 另外，在文档中穿插一些紧扣主题的**截屏、图片**，也能帮助用户更快理解复杂的技术概念。
 
-🚀行动建议17：用[ZOOM](https://www.zoom.com)、[Loom](https://www.loom.com/)、[Kap](https://getkap.co/) 、[Asciinema](https://asciinema.org/)这些录制屏幕或命令行操作的工具，搭配[CapCut](https://www.capcut.cn/)剪辑配音工具，把最关键的几个教程，制作成**3分钟以内的演示视频**, 封面直接用主题大字，放到对应文档的开头。
+🚀行动建议17：用[ZOOM](https://www.zoom.com)、[Loom](https://www.loom.com/)、[Kap](https://getkap.co/) 、[Asciinema](https://asciinema.org/)这些能录制屏幕或命令行的工具，搭配[CapCut](https://www.capcut.cn/)剪辑配音工具，把最关键的几个教程，制作成**3分钟以内的演示视频**, 封面直接用主题大字，放到对应文档的开头。
 
-TBD pic. video in doc example
+![](https://filecdn.code2life.top/2024_08_27_82a64e012845fa7368e21edbdafe9a444e13d8646211fdc6f208fdf883e0d2e1.png)
 
 ### 7. 迭代原则
 
@@ -265,9 +270,9 @@ TBD pic. video in doc example
 
 除了发布版本的多次迭代，**长期持续迭代一样重要**。Diátaxis推崇**随时随地，自内而外、自下而上**逐步改进文档的方法，就像植物生长一样。如果不长期投入精力，随着产品本身的迭代，文档一定会逐渐腐化，失去生命力。
 
-> Consider a plant. As a living, growing organism, a plant is never finished. -- Diátaxis
+![](https://filecdn.code2life.top/doc-plant.jpeg)
 
-TBD plant pic
+> Consider a plant. As a living, growing organism, a plant is never finished. -- Diátaxis
 
 🚀行动建议18：给文档站点加上评论、点赞等反馈渠道。每当收到用户反馈的通知时、或者自己阅读发现问题时，把要改的地方记到当日的Todo，尽量在当周内改完。
 
@@ -291,7 +296,8 @@ Markdown编辑器，IDE自带的已经足够了，我也试过各种花里胡哨
 
 写作平台方面，对于于技术人员来说，**IDE first**是效率最高的方式，没有什么是VSCode+一揽子插件搞不定的，有几个常用的插件：
 
-- [Mermaid](https://mermaid.live/) 画图，Markdown All in One已经内置
+- [Mermaid](https://mermaid.live/)，代码画图工具，[Markdown All in One插件](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) 已经内置支持
+- [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable)，辅助表格编辑和格式化。
 - [Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) 单词拼写检查
 - [Code Snap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) 代码片段截图
 - [Markdown Image](https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image) 粘贴图片自动上传图床
@@ -319,8 +325,9 @@ IDE first最大的优势是，哪怕是复杂到要在文档中穿插交互组�
 
 下面是最近发现的两个优秀的技术文档示例，它们都恰到好处的分离了不同读者的关注点、文档结构清晰、遵循了技术写作的最佳实践。
 
-- [Cloudflare Vectorize](https://developers.cloudflare.com/vectorize/)
-- [Restate Docs](docs.restate.dev/)
+- [Cloudflare Vectorize Docs](https://developers.cloudflare.com/vectorize/)
+- [Port IDP Docs](https://docs.getport.io/quickstart/)
+- [Restate Docs](https://docs.restate.dev/)
 
 🚀行动建议21：多读优秀的技术文档，学习他们的**信息结构、内容风格**。学到好的做法后，立刻在自己的文档上实践应用，再让AI给自己修改前后的内容打分评价，不断精进写作能力。
 
@@ -328,7 +335,7 @@ IDE first最大的优势是，哪怕是复杂到要在文档中穿插交互组�
 
 好的技术文档都是相似的，能让读者 **一眼找到、读得下去、立刻能用**。达成这个目标不简单，需要掌握正确的方法，长期刻意练习。
 
-通过这篇长文，我们系统性介绍了**Diátaxis文档**方法论、**7条对技术文档至关重要的写作原则**，最后简单介绍了高效写作的**工具箱、示例和模板**。
+通过这篇长文，我们系统性介绍了**Diátaxis文档**方法论、**7条对写好技术文档至关重要的写作原则**，最后简单介绍了高效写作的**工具箱、示例和模板**。
 
 除了这些**方法、原则、工具**，还有**21条行动建议**穿插全文，拿来就能用。每一条建议背后，都有我亲身体会过的深刻教训。
 
