@@ -359,7 +359,7 @@ SpringBoot Plugin会给Gradle加一个**bootJar Task**, 在打jar包时把设置
 ```groovy
 // SpringBoot Plugin生效的非常关键的设置
 bootJar {
-  mainClass.set('us.zoom.application.MyApplication')
+  mainClass.set('com.example.application.MyApplication')
 }
 ```
 
@@ -369,7 +369,7 @@ bootJar {
 Manifest-Version: 1.0
 Spring-Boot-Classpath-Index: BOOT-INF/classpath.idx
 Spring-Boot-Layers-Index: BOOT-INF/layers.idx
-Start-Class: us.zoom.application.ApplicationFullApplication
+Start-Class: com.example.application.ApplicationFullApplication
 Spring-Boot-Classes: BOOT-INF/classes/
 Spring-Boot-Lib: BOOT-INF/lib/
 Spring-Boot-Version: 2.4.5
@@ -406,13 +406,13 @@ plugins {
 }
 
 // java plugin内置的可设变量
-group = 'com.awesome'
+group = 'com.example'
 version = '1.0.0-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_15
 targetCompatibility = JavaVersion.VERSION_15
 
 bootJar {
-    mainClass.set('us.zoom.application.MyApplication')
+    mainClass.set('com.example.application.MyApplication')
 }
 
 allprojects {

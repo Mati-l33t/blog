@@ -105,7 +105,6 @@ public void processEvent(ApplicationEvent event) {
 ```java
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import us.zoom.web.calendar.core.event.MutationEvent;
 
 @Component
 public class UserDataChangedHandler {

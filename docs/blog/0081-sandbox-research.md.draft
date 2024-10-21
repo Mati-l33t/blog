@@ -1,0 +1,34 @@
+# 如何执行用户的非可信代码
+
+Platform扩展自定义能力
+通用的 Serverless运行时  Deno deploy
+
+
+- Why is a secure code sandbox necessary ?
+- What we are using, secure or not ?
+- What serverless runtime available ?
+- What we need ?
+- Comparison & Conclusion
+
+
+PoC & Demo
+Penetration testing
+Summary
+To scale out business, run custom codes to meet advanced users' requirements is often a must-have feature.
+The key of secure untrusted code runtime design requires: 
+    Just-enough capabilities in sandbox API/SDK
+    Share-nothing architecture to isolate everything by default
+After compared different types of code runtimes such as MicroVM/Containers/V8/WASM etc., V8 Isolate based solution wins, it's extensible, common, performant solution. We choosed Supabase's edge-runtime, a deno & v8 based serverless runtime.
+
+References
+https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model/
+https://www.youtube.com/watch?v=HK04UxENH10
+https://deno.com/blog/roll-your-own-javascript-runtime
+https://github.com/fermyon
+https://wasmer.io/
+https://github.com/firecracker-microvm/firecracker
+https://spectreattack.com/spectre.pdf
+https://supabase.com/blog/edge-runtime-self-hosted-deno-functions
+https://landscape.cncf.io/?group=serverless&view-mode=grid
+https://www.datadoghq.com/state-of-serverless/
+https://blog.cloudflare.com/workerd-open-source-workers-runtime/
