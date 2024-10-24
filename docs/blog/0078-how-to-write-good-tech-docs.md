@@ -109,7 +109,7 @@ Overview既能让用户**快速获得全局理解**，又能作为**关键索引
   - 安全合规相关的：安全白皮书、合规相关证明、SBOM和许可证清单
   - 性能相关的：Benchmark测试结果，最好是和竞品对比的
   
-🚀行动建议7：在[这份Overview大纲](/TBD)基础上，调整和填充你的文档站点首页。
+🚀行动建议7：在[这份Overview提纲](https://docs.code2life.top/guide/overview)的基础上，调整成你的文档首页。
 
 ### 在用户恰好要用时，让文档冒出来
 
@@ -300,9 +300,21 @@ IDE first最大的优势是，哪怕是复杂到要在文档中穿插交互组�
 
 ### 模板库和参考示例
 
-文档站点模板。Vitepress - Github仓库 TBD
+#### VitePress Diátaxis Template
 
-下面是最近发现的几个优秀技术文档示例，都恰到好处的分离了不同读者视角的关注点、文档结构清晰、遵循了技术写作的最佳实践。
+我用Vitepress做了一个[文档站点模板](https://docs.code2life.top)，把很多最佳实践融入到模板里了，如果觉得还不错，Star/Fork[模板仓库](https://github.com/Code2Life/vitepress-diataxis-template)，创建自己的文档站点吧。
+
+![](https://filecdn.code2life.top/vite-press-template.png-ImageProcess)
+
+#### Fern
+
+除了开源项目，也有一些专注文档领域的商业产品，我觉得目前把SDK+Docs生成做到极致的是[Fern](https://buildwithfern.com/)，不需要太多定制、不差钱可以试试Fern。
+
+![](https://filecdn.code2life.top/fern-example.png-ImageProcess)
+
+#### 优秀文档站点案例
+
+下面是最近发现的几个优秀技术文档站，都恰到好处的分离了不同读者视角的关注点、文档结构清晰、遵循了技术写作的最佳实践，值得阅读借鉴。
 
 - [Cloudflare Vectorize Docs](https://developers.cloudflare.com/vectorize/)
 - [Port IDP Docs](https://docs.getport.io/quickstart/)

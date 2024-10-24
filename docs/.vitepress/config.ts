@@ -1,6 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitepress'
-
+import { renderSandbox } from 'vitepress-plugin-sandpack'
+// @ts-ignore
+import container from 'markdown-it-container'
 import { feed } from './theme/utils/feed-rss'
 
 export default defineConfig({
@@ -12,6 +14,13 @@ export default defineConfig({
   appearance: false,
   markdown: {
     lineNumbers: true,
+    config(md: any) {
+      md.use(container, 'sandbox', {
+        render(tokens: any, idx: any) {
+          return renderSandbox(tokens, idx, 'sandbox')
+        }
+      })
+    }
   },
   buildEnd: feed,
   sitemap: {
@@ -35,39 +44,7 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#13212e' }],
     // https://html.spec.whatwg.org/multipage/semantics.html#meta-color-scheme
     ['meta', { name: 'color-scheme', content: 'light' }],
-    ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    // ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    /* Number font: Montserrat, Letter font: Raleway, Code font: JetBrains Mono
-       Raleway font has ugly number, so use Montserrat for number. */
-    // [
-    //   'link',
-    //   {
-    //     rel: 'stylesheet',
-    //     href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&text=1234567890&display=swap',
-    //   },
-    // ],
-    // [
-    //   'link',
-    //   {
-    //     rel: 'stylesheet',
-    //     href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-    //   },
-    // ],
-    // [
-    //   'script',
-    //   {
-    //     async: '',
-    //     src: 'https://www.googletagmanager.com/gtag/js?id=G-TJQVDW3EZK',
-    //   },
-    // ],
-    // [
-    //   'script',
-    //   {},
-    //   `window.dataLayer = window.dataLayer || [];
-    //    function gtag(){ dataLayer.push(arguments); }
-    //    gtag('js', new Date());
-    //    gtag('config', 'G-TJQVDW3EZK');`,
-    // ],
+    ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
     logo: '/logo.png',
