@@ -157,14 +157,14 @@ GPU虚拟化到此为止了吗？
 + **Gaia GPU**：这篇2018年[腾讯和北大发的论文](https://ieeexplore.ieee.org/document/8672318)的引用目前有43次，其他近几年类似研究大多是GaiaGPU的后续优化
 + **KubeShare & Kernel Burst**：引入Kernel burst概念，进一步提升了调度效率，GPU资源配额在单卡上实现了Auto Scale
 + **Ark GPU**：引入了负载预测模型提升任务调度效率，并且区分两种不同的QoS作为调度优先级，LC(Latency-Critical)和BE(Best-Effort)
-+ **多个云厂商共建的CNCF Sandbox项目 [HAMI](https://github.com/Project-HAMi/HAMi)**：以前叫k8s-vGPU-scheduler，侧重于在业界落地，支持了更多GPU设备厂商，关键的拦截和调度控制代码在[HAMi-core]([https://github.com/Project-HAMi/HAMi-core/blob/main/src/cuda/hook.c](https://github.com/Project-HAMi/HAMi-core/blob/main/src/cuda/hook.c))
-+ [**RUN AI**](https://run.ai)：一家以色列创业公司的商业产品，已经融资了$1.18亿，从产品演示看，很有可能是借鉴GaiaGPU的，做了更多的动态调度、GPU集群控制台。
++ **多个云厂商共建的CNCF Sandbox项目 [HAMI](https://github.com/Project-HAMi/HAMi)**：以前叫k8s-vGPU-scheduler，侧重于在业界落地，支持了更多GPU设备厂商，关键的拦截和调度控制代码在[HAMi-core](https://github.com/Project-HAMi/HAMi-core/blob/main/src/cuda/hook.c)，和GaiaGPU底层代码几乎一样
++ [**RUN AI**](https://run.ai)：一家以色列创业公司的商业产品，已经融资了$1.18亿，从产品演示看，很有可能也是借鉴了GaiaGPU，但做了更多的动态调度、GPU集群控制台。
 
-还有一个有意思的项目是**HuggingFace [ZeroGPU](https://huggingface.co/docs/hub/spaces-zerogpu)**，HuggingFace CEO Clem Delangue在2024年上半年，投了一千万刀建设了免费使用的A100推理集群，降低开发者做AI的门槛，半公益半商业化性质。
+还有一个有意思的项目是**HuggingFace [ZeroGPU](https://huggingface.co/docs/hub/spaces-zerogpu)**，是HuggingFace CEO Clem Delangue在2024年上半年投了一千万刀，建设了免费使用的A100推理集群，降低AI开发者的门槛，半公益半商业化性质。
 
-从Gradio SDK的源码看，这个项目Hook的是更高层的Pytorch API，而不是底层的NVIDIA Driver API，搭配Gradio SDK中实现的@**space.GPU装饰器**，拦截Python推理函数，让调度器对GPU资源进行配额判断，配额不足就让任务等待，足够就本地8xA100选择GPU执行推理，当函数冷却后，把上下文从GPU中置换出来，放入NVMe盘。
+HuggingFace ZeroGPU关键代码在Gradio SDK，从源码看，这个项目Hook的是更高层的Pytorch API，而不是底层的NVIDIA Driver API，搭配Gradio SDK中实现的@**space.GPU装饰器**，拦截Python推理函数，让调度器对GPU资源进行配额判断，配额不足就让任务等待，足够就本地8xA100选择GPU执行推理，当函数冷却后，把上下文从GPU中置换出来，放入NVMe盘。
 
-ZeroGPU这种Hook高层API也能做到GPU分时复用和QoS，做起来更简单，但没法细粒度控制每个应用能使用多少VRAM，比如ZeroGPU就允许每个应用最多占据一个完整的A100-40G VRAM。
+ZeroGPU这种Hook高层API也能做到GPU分时复用和QoS，但没法细粒度控制每个应用能使用多少VRAM，比如ZeroGPU就允许每个应用最多占据一个完整的A100-40G VRAM。
 
 总结一下，第三类共置任务调度的算力虚拟化方案，已经把**虚拟化的对象做到了算力这一层**，对AI底层计算库加装限流器，再配合Kubernetes自带的池化静态调度，实现了相对灵活的资源控制和多租户共享。
 
@@ -173,7 +173,7 @@ ZeroGPU这种Hook高层API也能做到GPU分时复用和QoS，做起来更简单
 除了上述虚拟设备路线的**问题2/3/4/5没有解决**，从整个GPU池的角度看，还有这几个新问题没有解决：
 
 + 仍然没有脱离GPU设备的桎梏，CPU部分和GPU部分的调度耦合在一起，无法独立扩缩容，做不到GPU部分的Scale to Zero再亚秒级Warm-up。
-+ 拉远视角看整个GPU集群，虽然借助Kubernetes的分布式调度器部分实现了池化，但没有做主动碎片整理、GPU池本身的扩缩容，运维成本仍然很高（上面提到的方案只有 run.ai 做了主动调度和碎片整理）
++ 拉远视角看整个GPU集群，虽然借助Kubernetes的分布式调度器部分实现了池化，但没有做主动碎片整理、GPU池本身的扩缩容，调度效率上不到下一个Level，运维成本仍然很高（上面提到的方案只有 run.ai 做了主动调度和碎片整理）
 + 都没有做故障隔离、内存地址隔离，在多个不可信租户共享的场景下不够安全。
 
 那是否可以沿着这条路**再往后想一层**，彻底解决这些问题呢？
@@ -182,11 +182,11 @@ ZeroGPU这种Hook高层API也能做到GPU分时复用和QoS，做起来更简单
 
 我们回到第一性原理继续思考下去，找根本解。
 
-既然要共享GPU算力，就得想办法把**所有算力集中到一个大池**，**对整池进行细粒度调度。**
+既然要**极致的共享GPU算力**，就得想办法把**所有算力集中到一个大池**，**对整池进行细粒度调度**。
 
-就像解决IaaS层的存储效率问题，分布式的NFS/ObjectStorage已经成了事实标准。
+就像解决IaaS层的存储效率问题，分布式的NFS/ObjectStorage已经成了事实标准。NFS把硬盘变成远端存储服务，实现了存算分离架构。
 
-NFS把硬盘变成远端存储服务，实现了存算分离架构。以此类推，如果把**GPU变成远端算力服务**，实现**GPU-CPU分离**，就能在独立的GPU节点组中实现**大池算力融合+细粒度调度控制的**架构，**就像把GPU当成NFS用**。
+以此类推，如果把**GPU变成远端算力服务**，实现**GPU-CPU分离**，就能在独立的GPU节点组中实现**大池算力融合+细粒度调度控制的**架构，**就像把GPU当成NFS用**。
 
 GPU独立池化后的极致状态是，**每个应用都可以用到所有的GPU资源**。这种AI算力融合的架构，也是我们把产品名定为**Tensor Fusion**的原因。
 
