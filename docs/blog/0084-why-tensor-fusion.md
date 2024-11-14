@@ -4,8 +4,8 @@ date:       2024-11-12
 tags:
     - AI
     - Kubernetes
-titleTemplate: "GPU Usage | LLM Serving | NVIDIA | GPU Virtualization | Share GPU | GPU Low Usage | GPU Pool | vGPU | rCUDA | remote CUDA"
-description: "GPU虚拟化的原理 | GPU虚拟化是什么 | GPU使用率低 | GPU池化 | GPU虚拟化 | Tensor Fusion如何提升GPU利用率 | AI服务推理 | GPU虚拟化有哪些方案 | 如果通过GPU池化提升利用率"
+titleTemplate: "GPU Usage | GPU Virtualization & Pooling | Share GPU with GPU Pool"
+description: "GPU虚拟化的原理 | GPU虚拟化是什么，技术方案有哪些 | 如何解决GPU使用率低问题 | NVIDIA GPU池化 | Tensor Fusion如何提升GPU利用率 | 大规模AI服务推理
 ---
 
 # 为什么Tensor Fusion能够颠覆GPU虚拟化
