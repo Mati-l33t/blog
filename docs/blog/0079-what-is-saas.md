@@ -3,6 +3,8 @@ title:      "SaaS的本质是什么"
 date:       2024-08-23
 tags:
     - 管理学
+titleTemplate: "SaaS是什么 | SaaS商业模式 | SaaS的本质"
+description: "SaaS的本质 | 三支柱模型 | SSP, SDC, CoE是什么 | 为什么买SaaS"
 ---
 
 # SaaS的本质是什么

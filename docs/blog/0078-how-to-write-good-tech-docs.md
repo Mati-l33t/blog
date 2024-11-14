@@ -3,6 +3,8 @@ title:      "如何写出高质量的技术文档?"
 date:       2024-07-11
 tags:
     - 软件设计
+titleTemplate: "| Diataxis Framework | 技术写作技巧 | Vitepress模板 | Vitepress Starter"
+description: "技术文档怎么写 | 技术文档模板 | Vitepress模板 | Diataxis框架是什么意思 | 写技术文档的技巧和原则"
 ---
 
 # 如何写出高质量的技术文档?

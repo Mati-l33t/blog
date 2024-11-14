@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitepress'
 import { renderSandbox } from 'vitepress-plugin-sandpack'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import container from 'markdown-it-container'
 import { feed } from './theme/utils/feed-rss'
@@ -14,8 +15,9 @@ export default defineConfig({
   appearance: false,
   markdown: {
     lineNumbers: true,
-    config(md: any) {
+    config(md) {
       md.use(container, 'sandbox', {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         render(tokens: any, idx: any) {
           return renderSandbox(tokens, idx, 'sandbox')
         }
@@ -27,6 +29,7 @@ export default defineConfig({
     hostname: 'https://code2life.top',
   },
   rewrites: {
+    "blog/0047-raspberrypi.md": "2020/01/06/0047-raspberrypi/index.md",
     ':blog/:num.:title.md': ':blog/:title.md',
   },
   vite: {

@@ -21,6 +21,10 @@ const extractTitle = (markdown: string): string => {
 }
 
 const formatURL = (url: string): string => {
+  // compatible with legacy doc
+  if (url.indexOf('0047-raspberrypi') !== -1) {
+    url = "/2020/01/06/0047-raspberrypi/"
+  }
   return url.replace(/\/\d+\./, '/')
 }
 
