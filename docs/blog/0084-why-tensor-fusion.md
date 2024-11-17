@@ -4,8 +4,8 @@ date:       2024-11-12
 tags:
     - AI
     - Kubernetes
-titleTemplate: "GPU Usage | GPU Virtualization & Pooling | Share GPU with GPU Pool"
-description: "GPU虚拟化的原理 | GPU虚拟化是什么，技术方案有哪些 | 如何解决GPU使用率低问题 | NVIDIA GPU池化 | Tensor Fusion如何提升GPU利用率 | 大规模AI服务推理
+titleTemplate: "GPU池化 | GPU使用率问题"
+description: "GPU虚拟化的原理 | GPU虚拟化是什么，技术方案有哪些 | 如何解决GPU使用率低问题 | NVIDIA GPU池化 | Tensor Fusion如何提升GPU利用率 | 大规模AI服务推理"
 ---
 
 # 为什么Tensor Fusion能够颠覆GPU虚拟化
@@ -71,7 +71,7 @@ GPU硬件和驱动层，一般会自带多用户的隔离和共享机制，每�
 
 总结一下，**MIG是空分复用（Space division multiplexing），Time-slicing和MPS是时分复用（Time division multiplexing）**，详细的对比可以参考[这篇文档](https://github.com/rh-aiservices-bu/gpu-partitioning-guide)。
 
-![](https://developer-blogs.nvidia.com/wp-content/uploads/2022/06/K8-featured.png)
+![](https://filecdn.code2life.top/nvidia-mig.png)
 
 **MIG和Time-slicing/MPS结合，可以实现类似GPU虚拟化的效果，但粒度太粗，无法从根本上提高GPU使用率**，也都不可能做到**显存超卖**，如果用了Time-slicing，还会带来**降低可用性、增加延迟**的风险。
 
@@ -91,7 +91,7 @@ GPU硬件和驱动层，一般会自带多用户的隔离和共享机制，每�
 
 虚拟设备在技术层面比较复杂，比如用IOMMU隔离内存页表，隔离驱动函数指针等等，这里不再展开。
 
-![](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/virtual-gpu/virtual-gpu-technology-vgpu-11-software-stack.jpg)
+![](https:///filecdn.code2life.top/virtual-gpu-technology-vgpu-11-software-stack.jpg)
 
 #### 2. 实现虚拟设备的3种变体
 
@@ -145,7 +145,6 @@ GPU虚拟化到此为止了吗？
 这个截面，通常是用LD_LIBRARY_PATH / LD_PRELOAD两把刀切开的，完全在用户态处理，性能损失极低。
 限流器一般用令牌桶算法，桶里剩多少，是异步线程调用nvml库获取的GPU实时监控数据判断的。
 
-![](https://cdn.nlark.com/yuque/0/2024/png/1549834/1730604330524-5daed2c0-775f-4487-8a74-297d037b3068.png?x-oss-process=image%2Fformat%2Cwebp%2Fresize%2Cw_1596%2Climit_0)
 
 调度器上层，再通过Kubernetes Device Plugin暴露算力配额接口给用户，让用户在resources中写上类似"**nvidia.com/vgpu: 1%**" 的requests/limits，搭配原生的或定制的Kubernetes调度器，实现集群级别的池化算力分配。
 
@@ -157,9 +156,9 @@ GPU虚拟化到此为止了吗？
 + **[KubeShare](https://github.com/NTHU-LSALAB/KubeShare) & [Kernel Burst](https://github.com/NTHU-LSALAB/Gemini)**：引入Kernel burst概念和预测任务执行机制，进一步提升了调度效率，实现了单GPU卡上的Auto Scale
 + **[Ark GPU](https://link.springer.com/article/10.1007/s42514-023-00154-y)**：引入了负载预测模型提升任务调度效率，并且区分LC(Latency-Critical)和BE(Best-Effort)两种不同的QoS，控制调度优先级
 + **[Project HAMI](https://github.com/Project-HAMi/HAMi)**：多个云厂商共建的CNCF Sandbox项目，以前叫[k8s-vGPU-scheduler](https://github.com/4paradigm/k8s-vgpu-scheduler)，侧重于在业界落地，支持了更多GPU设备厂商，关键的拦截和调度控制代码在[HAMi-core](https://github.com/Project-HAMi/HAMi-core/blob/main/src/cuda/hook.c)，和**GaiaGPU底层代码几乎一模一样**
-+ [**RUN AI**](https://run.ai)：一家已经融资了$1.18亿的以色列创业公司产品，，从Demo看，很有可能也是借鉴了GaiaGPU，但做了更多的企业级功能，比如动态调度、GPU集群控制台。
++ [**RUN AI**](https://run.ai)：一家已经融资了**$1.18亿**的以色列创业公司产品，从Demo看，很有可能也是借鉴了GaiaGPU，但做了更多的企业级功能，比如动态调度、GPU集群控制台。
 
-![](https://project-hami.io/img/construct.JPG)
+![](https://filecdn.code2life.top/gaia-gpu.png)
 
 还有一个有意思的项目是**HuggingFace [ZeroGPU](https://huggingface.co/docs/hub/spaces-zerogpu)**，是HuggingFace CEO Clem Delangue在今年刚投了一千万刀，建设了免费使用的A100推理集群，降低AI开发者门槛，半公益半商业化性质。
 
@@ -219,7 +218,7 @@ GPU独立池化后的极致状态是，**每个应用都可以用到所有的GPU
 
 **然而，命运的馈赠早已暗中标好了价格**。
 
-这个看上去完美的架构，相比前几种路线**只要拦截驱动层API**，算力虚拟化路线**要拦截和实现所有的计算库API**，还要做大量的**底层优化**来避免网络转发带来的性能影响，**技术难度、工作量都远高于前三种。**
+算力虚拟化看上去架构很完美，但要拦截和实现**所有的计算库API**，还要做大量的**底层优化**来避免网络转发带来的性能影响，**技术难度、工作量都远高于前三种**。
 
 rCUDA在4年前停止更新了；GPULess只实现了60多个CUDA函数的Stub；商业产品BitFusion被VMWare收购后去年也停止维护了。
 
@@ -236,7 +235,7 @@ rCUDA在4年前停止更新了；GPULess只实现了60多个CUDA函数的Stub；
 
 ## Tensor Fusion的机会在哪里？
 
-既然有个别创业公司在做类似的事情，**我们做Tensor Fusion的机会在哪呢？**
+既然有个别创业公司在做类似的事情，**我们做Tensor Fusion的机会在哪呢**？
 
 从调研结果看，我们和这第四类技术路线的几家公司**目标市场不重合**；而跟前三种技术路线产品的正面交锋，除了上面分析的**架构优势**，我们从**市场、产品、团队、技术方面看，都有足够的底气**。
 
@@ -248,7 +247,7 @@ rCUDA在4年前停止更新了；GPULess只实现了60多个CUDA函数的Stub；
 
 ### 产品
 
-产品成熟度上，目前市面上**没有任何产品**能做到**远程GPU计算池 + 虚拟显存扩充 + 动态调度**，而Tensor Fusion的原型产品**不仅做到了，而且已经在一家公司落地验证了**。
+产品成熟度上，目前市面上**没有任何产品**能做到**远程GPU池 + 虚拟显存扩充 + 动态调度**，Tensor Fusion不仅是**独一份**，而且已经在一家公司**落地验证**了。
 
 这家公司有个[AI动手实验室产品](https://www.tenclass.com/)，用户购买后能得到一个ComfyUI/SD环境学习AI绘图，用户可以自定义绘图流，选择不同的AI模型。
 

@@ -1,6 +1,7 @@
 ---
 title:      "工作流引擎Temporal学习笔记"
 date:       2023-01-23
+description: "Temporal使用教程 | 编排的本质是什么 | Temporal关键概念 | 5分钟上手Temporal | Temporal和其他的Workflow engine，比如Prefect、Dagster、Airflow、Jira有什么区别和优缺点"
 tags:
     - 分布式系统
     - Golang

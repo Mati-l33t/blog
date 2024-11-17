@@ -8,6 +8,19 @@ const items = [
     tag: 'Open Source',
     list: [
       {
+        title: "Tensor Fusion",
+        date: "2024-present",
+        highlights: "Under construction. The AI infra powered by AI",
+        description: "Made the lightweight dynamic config solution for Spring Boot apps. Supported all Spring Boot versions above 2.x. Can be used along with Kubernetes ConfigMap or standalone way",
+        github: 'https://github.com/NexusGPU',
+        techStacks: ["rust", "cpp", "kubernetes", "golang", "typescript"],
+        details: [],
+        source: {
+          url: "https://github.com/NexusGPU",
+          text: "Github - Tensor Fusion"
+        },
+      },
+      {
         title: "Spring Boot Dynamic Config",
         date: "2021",
         highlights: "200+ stars, running in production stably for years",

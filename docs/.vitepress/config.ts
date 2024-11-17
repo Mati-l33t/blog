@@ -47,7 +47,20 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#13212e' }],
     // https://html.spec.whatwg.org/multipage/semantics.html#meta-color-scheme
     ['meta', { name: 'color-scheme', content: 'light' }],
-    ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    [
+      "script",
+      { async: "true", src: "https://www.googletagmanager.com/gtag/js?id=G-EJM3ZBHLCH" },
+    ],
+    [
+      "script",
+      {},
+      `window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+       gtag('config', 'G-EJM3ZBHLCH');`
+    ]
   ],
   themeConfig: {
     logo: '/logo.png',

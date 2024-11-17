@@ -17,7 +17,8 @@ const itemsMap = {
 
   "node.js": { title: 'Node.js', link: 'https://nodejs.org/', icon: 'ri:nodejs-line' },
   "rx.js": { title: 'Rx.js', link: 'https://rxjs.dev/', icon: 'devicon-plain:rxjs' },
-  "rust": { title: "Rust", link: "https://www.rust-lang.org/", icon: "logos:rust"}
+  "rust": { title: "Rust", link: "https://www.rust-lang.org/", icon: "logos:rust"},
+  "cpp": { title: "Rust", link: "https://isocpp.org/", icon: "skill-icons:cpp"}
 } as Record<string, { title: string, link: string, icon: string }>
 </script>
 
