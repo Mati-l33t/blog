@@ -7,6 +7,8 @@ import imageViewer from "vitepress-plugin-image-viewer";
 import vImageViewer from "vitepress-plugin-image-viewer/lib/vImageViewer.vue";
 import { Sandbox } from "vitepress-plugin-sandpack";
 import DefaultTheme from "vitepress/theme-without-fonts";
+import VPlayer from "./components/VPlayer.vue";
+import "video.js/dist/video-js.css";
 
 export default {
   ...DefaultTheme,
@@ -16,6 +18,7 @@ export default {
     // eslint-disable-next-line vue/multi-word-component-names
     app.component("Sandbox", Sandbox);
     app.component("VImageViewer", vImageViewer);
+    app.component("VideoPlayer", VPlayer);
   },
   setup() {
     const route = useRoute();

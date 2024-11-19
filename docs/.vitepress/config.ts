@@ -33,6 +33,11 @@ export default defineConfig({
     ':blog/:num.:title.md': ':blog/:title.md',
   },
   vite: {
+    
+    optimizeDeps: {
+      include: ["@videojs-player/vue"],
+    },
+    
     resolve: {
       alias: [
         {
