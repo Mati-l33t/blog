@@ -11,7 +11,7 @@ const items = [
         title: "Tensor Fusion",
         date: "2024-present",
         highlights: "Under construction. The AI infra powered by AI",
-        description: "Made the lightweight dynamic config solution for Spring Boot apps. Supported all Spring Boot versions above 2.x. Can be used along with Kubernetes ConfigMap or standalone way",
+        description: "Tensor Fusion is a AI infra solution focusing on maximizing GPU usage with pooling and intelligent scheduling. It's based on a cutting-edge API-remoting GPU virtualization. Run more AI apps, with less GPUs.",
         github: 'https://github.com/NexusGPU',
         techStacks: ["rust", "cpp", "kubernetes", "golang", "typescript"],
         details: [],

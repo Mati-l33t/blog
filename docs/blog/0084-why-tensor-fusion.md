@@ -24,7 +24,7 @@ description: "GPU虚拟化的原理 | GPU虚拟化是什么，技术方案有哪
 
 在展开技术讨论之前，可以先看下Demo，了解Tensor Fusion是什么，使用文档在这里：[https://docs.tensor-fusion.ai/](https://docs.tensor-fusion.ai/)，欢迎试用、反馈。
 
-<video-player src="https://filecdn.code2life.top/TensorFusion-demo.mp4" poster="https://filecdn.code2life.top/tensor-fusion-poster.jpg" />
+<video-player src="https://filecdn.code2life.top/TensorFusion-demo.mp4" poster="https://filecdn.code2life.top/tfs-no-play-poster.png" />
 
 **读完这篇文章，下面几个问题你也会有答案。**
 

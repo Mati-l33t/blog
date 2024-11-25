@@ -24,7 +24,7 @@ As our research into GPU virtualization deepened, I compiled some valuable insig
 
 Before diving into the technical discussion, you can check out the Demo to understand what Tensor Fusion is. The documentation is available here: [https://docs.tensor-fusion.ai/](https://docs.tensor-fusion.ai/). We welcome trials and feedback.
 
-<video-player src="https://filecdn.code2life.top/TensorFusion-demo.mp4" poster="https://filecdn.code2life.top/tensor-fusion-poster.jpg" />
+<video-player src="https://filecdn.code2life.top/TensorFusion-demo.mp4" poster="https://filecdn.code2life.top/tfs-no-play-poster.png" />
 
 **After reading this article, you'll have answers to these questions:**
 
