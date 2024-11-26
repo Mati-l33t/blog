@@ -15,7 +15,7 @@ description: "What is GPU Virtualization, Pooling and How it works. How to Solve
 
 Recently, while working on our company's cloud cost optimization, most cloud resource cost control strategies were clear, but the exorbitant GPU fees remained a headache.
 
-In October, I caught up with an old friend who happened to be researching GPU virtualization. After seeing his prototype, my intuition told me it will be a **revolutionary technology** with possibly create a **unicorn-level company**.
+In October, I caught up with an old friend who happened to be researching GPU virtualization. After seeing his prototype, my intuition told me it will be a **revolutionary technology**, possibly it could create a **unicorn-level company**.
 
 We immediately aligned our vision and started working on the project in our spare time, naming it [Tensor Fusion](https://tensor-fusion.ai/).
 
