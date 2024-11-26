@@ -18,11 +18,11 @@ description: "GPU虚拟化的原理 | GPU虚拟化是什么，技术方案有哪
 
 十月跟一位好友叙旧，碰巧他正在研究GPU虚拟化，看完他的原型演示，直觉告诉我这是个**颠覆性技术**，甚至有机会创造出**独角兽级别的企业**。
 
-我们一拍即合，业余时间支棱起来，项目名为[Tensor Fusion](https://docs.tensor-fusion.ai/)。
+我们一拍即合，业余时间支棱起来，项目名为[Tensor Fusion](https://tensor-fusion.ai/)。
 
 随着对GPU虚拟化的研究深入，我整理了一些干货，既回答我们自己**为什么要投身这件事**，也回答用户和投资者**我们的产品价值在哪**。
 
-在展开技术讨论之前，可以先看下Demo，了解Tensor Fusion是什么，使用文档在这里：[https://docs.tensor-fusion.ai/](https://docs.tensor-fusion.ai/)，欢迎试用、反馈。
+在展开技术讨论之前，可以先看下Demo，了解Tensor Fusion是什么，使用文档在这里：[Get Started](https://tensor-fusion.ai/guide/get-started)，欢迎试用、反馈。
 
 <video-player src="https://filecdn.code2life.top/TensorFusion-demo.mp4" poster="https://filecdn.code2life.top/tfs-no-play-poster.png" />
 
@@ -156,7 +156,7 @@ GPU虚拟化到此为止了吗？
 + **[KubeShare](https://github.com/NTHU-LSALAB/KubeShare) & [Kernel Burst](https://github.com/NTHU-LSALAB/Gemini)**：引入Kernel burst概念和预测任务执行机制，进一步提升了调度效率，实现了单GPU卡上的Auto Scale
 + **[Ark GPU](https://link.springer.com/article/10.1007/s42514-023-00154-y)**：引入了负载预测模型提升任务调度效率，并且区分LC(Latency-Critical)和BE(Best-Effort)两种不同的QoS，控制调度优先级
 + **[Project HAMI](https://github.com/Project-HAMi/HAMi)**：多个云厂商共建的CNCF Sandbox项目，以前叫[k8s-vGPU-scheduler](https://github.com/4paradigm/k8s-vgpu-scheduler)，侧重于在业界落地，支持了更多GPU设备厂商，关键的拦截和调度控制代码在[HAMi-core](https://github.com/Project-HAMi/HAMi-core/blob/main/src/cuda/hook.c)，和**GaiaGPU底层代码几乎一模一样**
-+ [**RUN AI**](https://run.ai)：一家已经融资了**$1.18亿**的以色列创业公司产品，从Demo看，很有可能也是借鉴了GaiaGPU，但做了更多的企业级功能，比如动态调度、GPU集群控制台。
++ [**RUN AI**](https://run.ai)：一家已经融资了$1.18亿的以色列创业公司产品，从Demo看，很有可能也是借鉴了GaiaGPU，但做了更多的企业级功能，比如动态调度、GPU集群控制台。
 
 ![](https://filecdn.code2life.top/gaia-gpu.png)
 
@@ -247,7 +247,7 @@ rCUDA在4年前停止更新了；GPULess只实现了60多个CUDA函数的Stub；
 
 ### 产品
 
-产品成熟度上，目前市面上**没有任何产品**能做到**远程GPU池 + 虚拟显存扩充 + 动态调度**，Tensor Fusion不仅是**独一份**，而且已经在一家公司**落地验证**了。
+产品成熟度上，目前国际市场上**没有任何产品**能做到**远程GPU池 + 虚拟显存扩充 + 动态调度**，Tensor Fusion不仅是**独一份**，而且已经在一家公司**落地验证**了。
 
 这家公司有个[AI动手实验室产品](https://www.tenclass.com/)，用户购买后能得到一个ComfyUI/SD环境学习AI绘图，用户可以自定义绘图流，选择不同的AI模型。
 
@@ -295,7 +295,7 @@ Tensor Fusion原型产品，是我前同事和老朋友[Andy](https://github.com
 
 因此，我们相信Tensor Fusion有机会成为AI Infra领域新星，助力AI浪潮改变世界。
 
-目前我们也在寻找**能够理解硬核技术创新、具有全球化市场资源的投资机构**，**欢迎有投资意向的大咖垂询**。
+目前我们也在寻找**能够理解硬核技术创新、有全球化市场资源的投资机构**，**欢迎有投资意向的大咖垂询**。
 
 ![](https://filecdn.code2life.top/tensor-fusion.png)
 

@@ -4,25 +4,24 @@ date:       2024-11-12
 tags:
     - AI
     - Kubernetes
-titleTemplate: "GPU Pooling | GPU Utilization Issues"
+titleTemplate: "GPU Pooling | Increase GPU Usage | How to share remote GPU for LLM Serving"
 description: "What is GPU Virtualization, Pooling and How it works. How to Solve Low GPU Usage issue. NVIDIA GPU Pooling ways. How Tensor Fusion Improves GPU Utilization by 400%. Maximize Large-scale AI Service Inference Efficiency"
 ---
-
 # Why Tensor Fusion is the Game Changer in GPU Virtualization
 
 [[toc]]
 
 ## Background
 
-Recently, while working on our company's cloud cost optimization, most cloud resource cost control strategies were clear, but the exorbitant GPU fees remained a persistent headache.
+Recently, while working on our company's cloud cost optimization, most cloud resource cost control strategies were clear, but the exorbitant GPU fees remained a headache.
 
-In October, I caught up with an old friend who happened to be researching GPU virtualization. After seeing his prototype demo, my intuition told me this was a **revolutionary technology** with the potential to create a **unicorn-level enterprise**.
+In October, I caught up with an old friend who happened to be researching GPU virtualization. After seeing his prototype, my intuition told me it will be a **revolutionary technology** with possibly create a **unicorn-level company**.
 
-We immediately aligned our vision and started working on the project in our spare time, naming it [Tensor Fusion](https://docs.tensor-fusion.ai/).
+We immediately aligned our vision and started working on the project in our spare time, naming it [Tensor Fusion](https://tensor-fusion.ai/).
 
-As our research into GPU virtualization deepened, I compiled some valuable insights that both answer **why we're committed to this venture** and demonstrate to users and investors **where our product value lies**.
+As our research into GPU virtualization deepened, I compiled some valuable insights that both answer **why we're committed to this venture** and demonstrate to users or investors **where our product value lies**.
 
-Before diving into the technical discussion, you can check out the Demo to understand what Tensor Fusion is. The documentation is available here: [https://docs.tensor-fusion.ai/](https://docs.tensor-fusion.ai/). We welcome trials and feedback.
+Before diving into the technical discussion, you can check out the Demo to understand what Tensor Fusion is. The docs are available here: [Get Started](https://tensor-fusion.ai/guide/get-started). We welcome trials and feedback.
 
 <video-player src="https://filecdn.code2life.top/TensorFusion-demo.mp4" poster="https://filecdn.code2life.top/tfs-no-play-poster.png" />
 
@@ -36,7 +35,7 @@ Before diving into the technical discussion, you can check out the Demo to under
 
 ## Why GPU Virtualization is Needed
 
-While investigating our company's GPU cost issues, I noticed that each service instance exclusively occupied a GPU. Although individual GPU utilization could reach 70% during peak business hours, the **overall GPU cluster utilization never exceeded 20%**.
+While investigating GPU cost issues, I noticed that each service instance exclusively occupied a GPU. Although individual GPU utilization could reach 70% during peak business hours, the **overall GPU cluster utilization never exceeded 20%**.
 
 This example perfectly illustrates why GPU virtualization is necessary. Without virtualization, there's no way to **safely share GPUs**, meaning **80% of resources are wasted, paying cloud providers 400% more than necessary**!
 
@@ -46,36 +45,36 @@ This example perfectly illustrates why GPU virtualization is necessary. Without 
 2. Virtualization can isolate failures, memory addresses, and control quotas, which is **prerequisite for secure multi-tenancy**
 3. Virtualization is the **foundation for elastic scaling**, enabling **reduced tail latency and increased throughput** during high concurrency.
 
-IaaS has been developing for years, and CPU virtualization is almost perfect, but GPU is still used in mounting and calling physical devices way, which is obviously unreasonable.
+IaaS has been developing for years, and CPU virtualization is almost perfect, but GPU is still used in mounting physical devices way, **which is obviously unreasonable**.
 
 Can GPU virtualization be achieved? Yes, there are several solutions in the industry, and what are the problems?
 
 ## 4 GPU Virtualization Approaches
 
-Currently, there are four solutions in the industry, and we'll discuss them **from low to high** in terms of abstraction:
+Currently, there are 4 solutions in the industry, and we'll discuss them **from low to high** in terms of abstraction:
 
 1. Hardware and driver layer built-in sharing mechanisms, **strictly speaking, not virtualization**
 2. Virtual devices implemented **para-virtualization**
-3. **Emulation virtualization** for co-located task scheduling
-4. **Power virtualization** based on API forwarding
+3. **Fake virtualization** based-on co-located task scheduling
+4. **GPU Computing Power virtualization** based on API forwarding
 
 ### Hardware and driver layer sharing mechanisms
 
-GPU hardware and driver layer, generally has built-in multi-user isolation and sharing mechanisms, and each GPU manufacturer has its own implementation.
+GPU hardware and driver layer has built-in multi-user isolation and sharing mechanisms, and each GPU manufacturer has its own implementation.
 
-For example, NVIDIA's built-in sharing mechanisms mainly include three types:
+For example, NVIDIA's built-in sharing mechanisms mainly include 3 types:
 
 1. [Multi-instance GPU](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/) (MIG) ，**Multi-instance GPU**. Similar to cutting cake, dividing the GPU into several completely isolated parts, but only 7 sub-GPUs can be produced at most, and the memory isolation is GB-level，only supported by **Ampere architecture** after 2020.
 2. [Time-slicing](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-sharing.html#comparison-time-slicing-and-multi-instance-gpu) is the popular oversubscription way in Kubernetes. It lacks memory and fault isolation. NVIDIA just **presents a single GPU as multiple devices** to different Pods. There's no control over Pods launching multiple processes to compete for time slices. Think of it like a **buffet line with no portion control** - nothing stops one person from taking everything.
-3. [Multi-process Service](https://docs.nvidia.com/deploy/mps/index.html) (MPS) is a variant of Time-slicing that shares CUDA Context across multiple processes. This allows the MPS scheduler to insert tasks whenever resources are idle, rather than relying on **concurrent execution and CUDA context switching** like Time-slicing does. Prior to 2017, NVIDIA provided MPS scheduling through a software-layer mps-server. With the introduction of Volta architecture GPUs, MPS expanded to support up to 48 simultaneous processes and added memory address space isolation, though it still lacks memory OOM protection and fault isolation. In most cases, [MPS achieves higher efficiency than Time-slicing](https://github.com/pytorch/serve/blob/master/docs/nvidia_mps.md). Think of MPS like a **restaurant wait list system** - as soon as a table opens up, the next customer can be seated.
+3. [Multi-process Service](https://docs.nvidia.com/deploy/mps/index.html) (MPS) is a variant of Time-slicing that shares CUDA Context across multiple processes. This allows the MPS scheduler to insert tasks whenever CUDA cores are idle, rather than relying on **concurrent execution and CUDA context switching** like Time-slicing does. Prior to 2017, NVIDIA provided MPS scheduling through a software-layer mps-server. With the introduction of Volta architecture GPUs, MPS expanded to support up to 48 simultaneous processes and added memory address space isolation, though it still lacks OOM protection and fault isolation. In most cases, [MPS achieves higher efficiency than Time-slicing](https://github.com/pytorch/serve/blob/master/docs/nvidia_mps.md). Think of MPS like a **restaurant wait list system** - as soon as a table opens up, the next customer can be seated.
 
 To sum up, **MIG is space division multiplexing (Space division multiplexing), Time-slicing and MPS are time division multiplexing (Time division multiplexing)**, the detailed comparison can refer to [this document](https://github.com/rh-aiservices-bu/gpu-partitioning-guide).
 
 ![](https://filecdn.code2life.top/nvidia-mig.png)
 
-**MIG and Time-slicing/MPS combined can achieve a similar effect to GPU virtualization, but the granularity is too coarse to fundamentally improve GPU utilization, and none of them can achieve **memory over-selling**, if Time-slicing is used, it will also bring **reduced availability and increased latency** risks.
+Combing MIG and Time-slicing/MPS can achieve a similar effect to GPU virtualization, but the granularity is too coarse to fundamentally improve GPU utilization, and none of them can achieve **VRAM oversubscription**, if Time-slicing is used, it will also bring **reduced availability and increased latency** risks.
 
-In actual applications, although this solution cannot achieve **fine-grained resource control** over GPUs, it is simple and easy to implement, and can meet the most basic business needs when combined with Kubernetes cluster's pooled scheduling capabilities.
+In real cases, although this solution cannot achieve **fine-grained resource control** over GPUs, it is simple and easy to implement, and can meet the most basic business needs when combined with Kubernetes cluster's pooled scheduling capabilities.
 
 There is an open-source project [Nebuly NOS](https://nebuly-ai.github.io/nos/dynamic-gpu-partitioning/partitioning-modes-comparison) based on NVIDIA's MIG+MPS to **dynamically split GPU devices** in Kubernetes, which is more automated and has better scheduling effects than NVIDIA's native Kubernetes solution.
 
@@ -85,7 +84,7 @@ There is an open-source project [Nebuly NOS](https://nebuly-ai.github.io/nos/dyn
 
 Virtual I/O devices have evolved for years in IaaS - this is the "orthodox approach" to GPU virtualization.
 
-When implementing virtual devices, pure software emulation (full virtualization) is typically avoided to minimize performance impact. Instead, **paravirtualization** is used to balance performance and security.
+When implementing virtual devices, pure software emulation (full virtualization) is typically avoided to minimize performance impact. Instead, **para-virtualization** is used to balance performance and security.
 
 The basic idea is: isolating the dangerous **device control layer** in the hypervisor while passing through the **device data and functional layers** directly to VMs.
 
@@ -97,82 +96,79 @@ Virtual devices are technically complex, involving things like IOMMU for memory 
 
 There are 3 variants for implementing GPU virtual devices: VFIO + SR-IOV, GRID vGPU, and VirtIO.
 
-1. **VFIO + SR-IOV**: Think of VFIO as "VF" (Virtual Function) + "IO". VMs call VFs which map to PFs (Physical Functions) on the device. SR-IOV is a PCIe device virtualization standard - when hardware vendors support it, hypervisors can manage "device avatars" accordingly. AMD mainly uses VFIO+SR-IOV for GPU virtualization, with performance loss under 4%.
-
-2. **GRID vGPU**: This is NVIDIA's proprietary commercial virtual device solution. NVIDIA developed GRID vGPU early on, keeping it closed-source with expensive licensing, forcing cloud providers to develop their own NVIDIA GPU virtualization. It uses Mediated Device (mdev) and modified drivers to achieve similar effects to VFIO + SR-IOV. As the world's highest-valued company, NVIDIA sets its own standards. Before that, Intel's GVT used a similar approach.
-
+1. **VFIO + SR-IOV**: Think of VFIO as "VF" (Virtual Function) + "IO". VMs call VFs which map to PFs (Physical Functions) on the device. SR-IOV is a PCIe device virtualization standard - when hardware vendors support it, hypervisors can manage device's logical replications accordingly. AMD mainly uses VFIO+SR-IOV for GPU virtualization, with performance loss under 4%.
+2. **GRID vGPU**: This is NVIDIA's proprietary commercial virtual device solution. NVIDIA developed GRID vGPU early on, keeping it closed-source with expensive licensing, and some cloud vendors develop their own NVIDIA GPU virtualization. It uses Mediated Device (mdev) and modified drivers to achieve similar effects to VFIO + SR-IOV. As the world's highest-valued company, NVIDIA sets its own standards. Before that, Intel's GVT used a similar approach.
 3. **VirtIO**: Predating SR-IOV, VirtIO injects a "fake driver" into VMs. The hypervisor reads I/O requests from host-guest shared memory and forwards them to the "real driver" on the host. It introduces "frontend" and "backend" driver concepts, with only the flexible frontend visible in VMs. Performance loss is slightly higher but offers more flexibility. The [qCUDA](https://github.com/coldfunction/qCUDA) project demonstrates this approach.
 
-In practice, cloud providers selling GPU VMs need traditional virtual device solutions, leading to proprietary implementations like [Ali Cloud cGPU](https://www.alibabacloud.com/help/en/egs/what-is-cgpu).
+In practice, cloud vendors selling GPU VMs need traditional virtual device solutions, leading to proprietary implementations like [Ali Cloud cGPU](https://www.alibabacloud.com/help/en/egs/what-is-cgpu).
 
 #### 3. Why Virtual Devices Aren't the Ultimate Solution
 
 While virtual devices look promising with MB-level memory control and 1%/10% compute control per GPU, running in OS kernel space with proven security technologies, they aren't the complete answer.
 
-GPU virtualization has reached this point?
+Is virtual device the perfect state of GPU virtualization?
 
 Of course not.
 
-We just need to ask one question: **What does the user need?**
+Just ask one question: **What does users want?**
 
-Does the user need a VM with a GPU? Is it the 6912 CUDA cores and 4200MB VRAM on the GPU?
+Does users need a VM with a GPU? Is it the 6912 CUDA cores and 4200MB VRAM on the GPU?
 
 No, they don't.
 
-We need to think from the **first principles**.
+Think from the **first principles**, users needs: **to train/infer various neural network models to achieve business goals**. So, there needs to be something that helps them **perform tensor calculations at a rate of trillions of floating-point operations per second**.
 
-The user needs: **to train/infer various neural network models to achieve business goals**. So, there needs to be something that helps them **perform tensor calculations at a rate of trillions of floating-point numbers per second**.
+Is there a way to **handle multiple tenants' requests as quickly, efficiently, and securely as possible** in a limited GPU resource pool?
 
-Is there a way to **complete multiple tenant requests as quickly, efficiently, and securely as possible** in a limited GPU resource pool?
-
-Thinking to this dimension, the virtualization of GPU devices itself is no longer important, **providing computing power, isolating and sharing computing power -- that is the true virtualization** that meets user needs.
+Thinking to this dimension, the virtualization of GPU devices is no longer important, **offering TFLOPS, isolating and sharing computing power -- that is the true virtualization** that meets user needs.
 
 From the **business** perspective, what are the limitations of the virtual device approach?
 
-1. The **resource quota of virtual devices is fixed** and cannot be adjusted automatically according to **business** peaks and troughs, leading to limited dynamic scheduling space and the **overall resource utilization is still not as high as expected**
-2. CUDA cores can be oversubscribed, but generally cannot oversubscribe VRAM, but VRAM is likely to be the bottleneck for oversubscription, **deploy more AI apps for the business** is not possible
+1. The **resource quota of virtual devices is fixed** and cannot be adjusted dynamically according to **business** peaks and troughs, thus the **overall resource utilization is still not as high as expected**
+2. CUDA cores can be oversubscribed, but generally cannot **oversubscribe VRAM**, but VRAM is likely to be the bottleneck, **deploy much more AI apps for the business** is not possible
 3. Physical GPU devices must be mounted on the host, and drivers must be mounted on the **business** running environment, affecting elasticity and increasing management complexity
 4. It is very hard to jointly accelerate a set of computing tasks across multiple GPUs on different machines, so **business** latency cannot be reduced
 5. Too dependent on hardware vendors, it is impossible to build a heterogeneous cluster with multiple GPU vendors, **business** is still easily locked by GPU vendors
 
 ### Co-located task scheduling emulation
 
-In the limitations of virtual devices, the first one is the most serious: **When business has obvious peaks and troughs, GPU utilization still does not improve**.
+Among those limitations of virtual devices, the first one is the most serious: **When business has obvious peaks and troughs, GPU utilization still not improved**.
 
-Therefore, there is a third type of solution on the market that focuses on solving the problem of GPU utilization. The key innovation is: **Drilling down from a coarse device level to a fine computing task level**.
-This approach adds a "broker" layer above the GPU devices. Users just tell the broker what computations they need, and the broker handles assigning the work to specific GPUs. Instead of virtualizing GPU devices, we're virtualizing the actual compute power.
+Therefore, there is a third type of solution emerged. The key innovation is: **Drilling down scheduling from a coarse device level to a fine computing task level**.
 
-It's similar to hiring a general contractor instead of individual workers. The contractor can efficiently manage multiple projects by assigning tasks to workers as needed, which works better than clients trying to manage workers directly.
+This approach adds a "broker" layer above the GPU devices. Users just tell the broker what target GPU utilization they need.
 
-How is this implemented? The system allows multiple applications to concurrently execute compute tasks on GPUs, called "**co-location tasks**". Applications call user-space compute libraries like NVIDIA's libcuda and AMD's HIP SDK. By **intercepting at this layer and adding a rate limiter**, we can precisely control how these co-located tasks flow into physical devices and manage resource quotas.
+It's similar to hiring a contractor instead of individual workers. The contractor can efficiently manage multiple projects by assigning tasks to workers as needed, which works better than clients trying to manage workers directly.
+
+How is this implemented? The system allows multiple applications to concurrently execute compute tasks on one GPU, called "**co-location tasks**". Applications call user-space compute libraries like NVIDIA's libcuda and AMD's HIP SDK. By **intercepting at this layer and adding a rate limiter**, they can precisely control how these co-located tasks flow into physical devices and manage resource quotas.
 
 This interception is typically done using **LD_LIBRARY_PATH / LD_PRELOAD** in user space, resulting in minimal performance overhead. The rate limiter usually uses a token bucket algorithm and polls GPU metrics via the nvml library.
 
 Above the scheduler, compute quota interfaces are exposed to users through Kubernetes Device Plugins. Users can specify requests/limits like "nvidia.com/vgpu: 1%" in their resource specifications. Combined with native or custom Kubernetes schedulers, this enables cluster-level pooled compute allocation.
 
-While this approach resembles virtual devices, it lacks memory address isolation and fault isolation, so it's not strictly virtualization. We'll call it "co-location task scheduling emulation".
+While the result  resembles virtual devices, it lacks memory address isolation and fault isolation, so it's not strictly virtualization. We'll call it "co-location task scheduling emulation".
 
 Here are some notable implementations from academia and industry:
 
-+ **[Gaia GPU](https://github.com/tkestack/vcuda-controller)**: Implementation from a 2018 [Tencent and Peking University paper](https://ieeexplore.ieee.org/document/8672318) with 43 citations. Most similar research since then has built upon GaiaGPU's foundation
++ **[Gaia GPU](https://github.com/tkestack/vcuda-controller)**: Implementation from [a paper in 2018 by Tencent and Peking University paper](https://ieeexplore.ieee.org/document/8672318) with 43 citations. Most similar research since then has built upon GaiaGPU's foundation
 + **[KubeShare](https://github.com/NTHU-LSALAB/KubeShare) & [Kernel Burst](https://github.com/NTHU-LSALAB/Gemini)**: Introduced kernel burst concepts and task execution prediction to improve scheduling efficiency, enabling Auto Scale on single GPUs
 + **[Ark GPU](https://link.springer.com/article/10.1007/s42514-023-00154-y)**: Added load prediction models and QoS differentiation between LC (Latency-Critical) and BE (Best-Effort) workloads
 + **[Project HAMI](https://github.com/Project-HAMi/HAMi)**: A CNCF Sandbox project (formerly k8s-vGPU-scheduler) focused on production deployment across multiple cloud providers. Core interception code in [HAMi-core](https://github.com/Project-HAMi/HAMi-core/blob/main/src/cuda/hook.c) is nearly identical to GaiaGPU
-+ [**RUN AI**](https://run.ai): An Israeli startup that has raised **$118M**, likely building on GaiaGPU concepts while adding enterprise features like dynamic scheduling and GPU cluster management console
++ [**RUN AI**](https://run.ai): An Israeli startup that has raised $118M, likely building on GaiaGPU while adding enterprise features like dynamic scheduling and GPU cluster management console
 
 ![](https://filecdn.code2life.top/gaia-gpu.png)
 
-An interesting project is **HuggingFace [ZeroGPU](https://huggingface.co/docs/hub/spaces-zerogpu)**, where CEO Clem Delangue invested $10M to build a free A100 inference cluster for AI developers. The key code in Gradio SDK hooks into PyTorch APIs rather than NVIDIA Driver APIs. It uses the @**space.GPU decorator** to intercept Python inference functions, letting the scheduler manage GPU quotas. When resources are available, it executes on local 8xA100s and swaps memory to NVMe when functions cool down.
+An interesting project is **HuggingFace [ZeroGPU](https://huggingface.co/docs/hub/spaces-zerogpu)**, where CEO Clem Delangue invested $10M to build a free A100 inference cluster for AI developers. The key code in Gradio SDK hooks PyTorch APIs rather than NVIDIA Driver APIs. It uses the @**space.GPU decorator** to intercept Python inference functions, letting the scheduler manage GPU quotas. When resources are available, it executes on local 8xA100s and swaps memory to NVMe when functions cool down.
 
 ![](https://filecdn.code2life.top/zero-gpu.png)
 
-While ZeroGPU's high-level API hooking enables GPU time-sharing and QoS, it can't finely control VRAM per application - each app can use up to one full A100-40G VRAM.
+While ZeroGPU's high-level API hooking enables GPU time-sharing and QoS, it can't finely control VRAM per application - each app can use up to 40G VRAM of A100.
 
 In summary, this third approach of co-located task scheduling virtualizes at the compute power level. By adding rate limiters to AI compute libraries and leveraging Kubernetes' native pool scheduling, it achieves relatively flexible resource control and multi-tenant sharing.
 
 **But this is not enough. Why?**
 
-Besides not solving problems #2/3/4/5 of the virtual device approach mentioned above, looking at the entire GPU pool, there are several new unsolved challenges:
+Besides not solving problems #2/3/4/5 of the virtual device approach mentioned above, looking at the entire GPU pool, there are several unsolved challenges about multi-tenancy and pooling:
 
 + Still bound to GPU devices - CPU and GPU scheduling remain coupled, making independent scaling impossible. Can't achieve GPU Scale to Zero with sub-second warm-up.
 + From a cluster perspective, while Kubernetes enables some pooling through distributed scheduling, there's no active defragmentation or GPU pool auto-scaling. Scheduling efficiency can't reach the next level and operational costs remain high (only run.ai among mentioned solutions does active scheduling and defragmentation)
@@ -180,7 +176,7 @@ Besides not solving problems #2/3/4/5 of the virtual device approach mentioned a
 
 Can we think one step further along this path to thoroughly solve these issues?
 
-### API Remoting Compute Virtualization 
+### API Remoting Compute Virtualization
 
 Let's return to first principles and think deeper to find the fundamental solution.
 
@@ -214,7 +210,7 @@ While **API remoting compute virtualization and pooling** seems perfect, how fea
 
 Academia explored this path early on, pioneered by the [rCUDA](https://ieeexplore.ieee.org/abstract/document/5547126/) paper with 400+ citations. The basic principle is intercepting CUDA APIs via LD_LIBRARY_PATH or LD_PRELOAD for network forwarding, creating shadow threads/processes on GPU-equipped servers to replay client CUDA calls.
 
-![](https://filecdn.code2life.top/gpuless-arch.png)
+![](https://filecdn.code2life.top/tensor-fusion-architecuture.png)
 
 **However, destiny's gifts come with hidden costs.**
 
@@ -241,13 +237,13 @@ Our research shows we don't overlap with other companies using the fourth techni
 
 ### Market
 
-+ The **GPU hardware market** has reached [$61.58 billion in 2024](https://www.fortunebusinessinsights.com/graphic-processing-unit-gpu-market-109831). With a **28.6% CAGR**, it will grow to **$461.02 billion** by 2032. This growth propelled NVIDIA to become the world's most valuable company, holding 95% market share in 2024. Assume GPU efficiency management market is mere 1% slice of the GPU hardware market, it represents a $610M opportunity in 2024. Moreover, few AI infrastructure companies compete in this emerging blue ocean market.
-+ For **target market**, Tensor Fusion focuses on serving **global cloud providers and AI SaaS companies with GPU clusters**. Our main competitor is Run.AI, which is using the third type of virtualization and scheduling approach, we're very confident in surpassing over time.
++ The **GPU hardware market** has reached [$61.58 billion in 2024](https://www.fortunebusinessinsights.com/graphic-processing-unit-gpu-market-109831). With a **28.6% CAGR**, it will grow to **$461.02 billion** by 2032. This growth propelled NVIDIA to become the world's most valuable company, holding more than 95% market share in 2024. Assume GPU efficiency management market is mere 1% slice of the GPU hardware market, it represents a $610M opportunity in 2024. Moreover, few AI infrastructure companies compete in this emerging blue ocean market.
++ For **target market**, Tensor Fusion focuses on serving **global cloud providers and AI SaaS companies with GPU clusters**. Our main competitor is Run.AI, which is using the third type of virtualization and scheduling approach, we're very confident that surpassing Run.AI is just a matter of time.
 + Our **market strategy** starts with small/medium cloud providers and AI SaaS companies for solution validation, gradually expanding to larger players like HuggingFace and AWS.
 
 ### Product
 
-In terms of product maturity, Tensor Fusion is currently the **only solution** offering **remote GPU pooling + virtual VRAM expansion + dynamic scheduling**, and has already been **validated in production** by a customer in Asia.
+In terms of product maturity, Tensor Fusion is currently the **only solution** offering **remote GPU pooling + virtual VRAM expansion + dynamic scheduling** in global market, and has already been **validated in production** by a customer in Asia.
 
 This customer runs an [AI hands-on lab platform](https://www.tenclass.com/) where users get access to ComfyUI/SD environments for AI image generation, with customizable workflows and model selection.
 
@@ -263,7 +259,7 @@ Our product strategy avoids **competing with customers by building our own compu
 
 The Tensor Fusion prototype was developed by my friend and former colleague [Andy](https://github.com/nooodles2023), a serial entrepreneur and the creator of a [mvisor](https://github.com/tenclass/mvisor), Andy brings exceptional creativity and low-level programming expertise.
 
-As a co-founder, I bring [technical expertise](https://github.com/code2life) in IaaS/PaaS and connections with international cloud providers. With experience in product, technology, marketing and management from internal startups, I'm confident in leading business operations and product development.
+As co-founder, I bring [technical expertise](https://github.com/code2life) in IaaS/PaaS and connections with international cloud providers. With experience in product, technology, marketing and management from internal startups, I'm confident in leading business operations and product development.
 
 Our third founding engineer [Carl](https://github.com/0x5457) has contributed to top open source projects including [Golang](https://github.com/golang/go/commit/42b20297d314bd72195e9abff55b0c607c2619a8), Kubernetes, TiKV, and Supabase. He has also built RISC-V emulators and WASM runtimes, demonstrating strong systems programming capabilities.
 
@@ -276,7 +272,7 @@ We are actively seeking a **Sales and Operations leader** to join as a potential
 Beyond our architectural advantages, we have three key technical differentiators:
 
 + Proprietary optimizations: Our team's deep CUDA and virtualization expertise has enabled us to develop **patentable innovations in memory-to-VRAM expansion, kernel acceleration, and high-performance protocols**. These create significant technical moats that would take competitors years to replicate, protecting our first-mover advantage.
-+ Advanced scheduling: We're developing GPU context hot migration + AI-based dynamic scheduling. This JIT proactive scheduling approach creates a generational advantage over traditional AOT passive allocation via Kubernetes Schedule Plugins.
++ Advanced scheduling: We're developing **GPU context hot migration** + AI-based dynamic scheduling. This JIT proactive scheduling approach creates a generational advantage over traditional AOT passive allocation via Kubernetes Schedule Plugins.
 + Seamless integration: Using Kubernetes ecosystem and cross-domain technologies, we've achieved **zero-touch onboarding and zero-config migration, dramatically reducing adoption costs** - a capability unmatched by any existing solution.
 
 ## Conclusion
@@ -293,7 +289,7 @@ The essence of virtualization and resource sharing in IaaS lies in transforming 
 
 Therefore, we believe Tensor Fusion has the opportunity to become a rising star in AI infra, helping the AI wave transform the world.
 
-We are currently seeking **investment partners who understand hardcore technical innovation and have global market resources**. **We welcome inquiries from interested investors**.
+We are currently seeking **investment partners who understand core technical innovation and have global market resources**. **We welcome inquiries from interested investors**.
 
 ![](https://filecdn.code2life.top/tensor-fusion.png)
 
