@@ -24,7 +24,7 @@ const hotBlogs = [{
   title: "树莓派可以用来干什么?",
   url: '/2020/01/06/0047-raspberrypi/',
 }, {
-  title: '30分钟入门Kubernetes?',
+  title: '30分钟入门Kubernetes',
   url: '/blog/0072-k8s-in-30-min',
 }, {
   title: '工作流引擎Temporal学习笔记 | 使用教程',
