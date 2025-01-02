@@ -53,3 +53,23 @@ Rule管理集中化，部分托管
 事 - resource + action => validation -> PolicyEngine 事情的可行性与风险
 
 人（Principle - Group relationship），事 (Res & Action - Policy Rules)， 人做事的记录 (Events) 都需要可审计可追踪。
+
+
+
+Why OPA is NOT a good solution for AuthZ ?
+OpenPolicyAgent(OPA) is a generic policy engine, wrap it to be an AuthZ solution caused lots of effort (Will Jiang tried before)
+OPA requires agent deployment, it not only introduced extra effort on Local testing, dev, prod, but also lack of SDK, thus Will developed Java/Go SDK for it, and it requires Continuous effort to maintain it
+OPA can do ABAC and policy evaluation well, however, it’s pure engine, without metadata and relationship storage, thus ReBAC is impossible, but ReBAC is the most suitable model for AuthZ scenario (Will Jiang developed a simple ReBAC based on it before, but it’s still not a real Relation Graph based ReBAC)
+OPA’s rego language has some learn curve, and it doesn’t provide policy storage and policy distribution solutions (Will Jiang also developed it…)
+
+
+Why OpenFGA is a good solution for AuthZ ？
+It’s built for AuthZ natively, based on Google Zanzibar paper (https://zanzibar.academy/ ), it’s the most effective and most widely used model for ReBAC AuthZ
+OpenFGA is built by Auth0, a leading AuthZ company, It was acquired by Okta years ago, now part of Okta product, the open source part is exactly the same as Fine-grained Authorization solution of Auth0, maturity and credit is much better than OPA (which only used in K8S infra level for most use cases)
+OpenFGA has all languages SDK, very easy to integrate, and no effort us, no need secondary development
+OpenFGA can do Provable Compliance, it has Auth Query feature, you can query Whether and WHY some user can perform some action, it’s only possible when using ReBAC model and Graph storage to infer the access control Path
+OpenFGA’s sever side is just a binary with PG/MySQL storage, deployment and maintenance effort is minimal, the Z3PC review showed high score (because it’s built by a security company actually)
+The auth query performance is good during the testing, and it’s stateless thus scalable (while OPA doesn’t have server-side, Will Jiang wrapped it with Java, performance and maintenance effort is much larger than Golang based OpenFGA, in which we don’t need to develop even one line of code)
+
+Play this one minute will get the core concepts and model of OpenFGA:
+https://play.fga.dev/
