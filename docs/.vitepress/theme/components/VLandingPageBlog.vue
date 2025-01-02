@@ -27,7 +27,7 @@ const hotBlogs = [{
   title: '30分钟入门Kubernetes',
   url: '/blog/0072-k8s-in-30-min',
 }, {
-  title: '工作流引擎Temporal学习笔记 | 使用教程',
+  title: '工作流引擎Temporal学习笔记 & 使用教程',
   url: '/blog/0070-temporal-notes',
 }, {
   title: '软件设计杂谈——云原生12要素',
