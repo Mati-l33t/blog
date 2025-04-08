@@ -9,11 +9,11 @@ const items = [
     list: [
       {
         title: "Tensor Fusion",
-        date: "2024-present",
+        date: "2025-present",
         highlights: "Under construction. The AI infra powered by AI",
-        description: "Tensor Fusion is a AI infra solution focusing on maximizing GPU usage with pooling and intelligent scheduling. It's based on a cutting-edge API-remoting GPU virtualization. Run more AI apps, with less GPUs.",
+        description: "Tensor Fusion is the AI infra solution focusing on maximizing GPU usage with virtualization, pooling and intelligent scheduling. Run more AI apps, with less GPUs.",
         github: 'https://github.com/NexusGPU',
-        techStacks: ["rust", "cpp", "kubernetes", "golang", "typescript"],
+        techStacks: ["rust", "cpp", "kubernetes", "golang", "typescript", "vue"],
         details: [],
         source: {
           url: "https://github.com/NexusGPU",
