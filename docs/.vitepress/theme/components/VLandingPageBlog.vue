@@ -18,11 +18,11 @@ for (const year of allYears) {
 }
 
 const hotBlogs = [{
-  title: 'Why Tensor Fusion is the Game Changer in GPU Virtualization? ',
-  url: '/blog/0084-why-tensor-fusion-en',
+  title: 'Proxmox VE Post Install script ',
+  url: '/blog/0001-Proxmox-VE-Post-Install',
 }, {
-  title: "树莓派可以用来干什么?",
-  url: '/2020/01/06/0047-raspberrypi/',
+  title: "AdGuard Home Proxmox LXC script",
+  url: '/blog/0002-adguard-home',
 }, {
   title: '30分钟入门Kubernetes',
   url: '/blog/0072-k8s-in-30-min',

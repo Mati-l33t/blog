@@ -10,15 +10,23 @@ progress: false
 <script setup lang="ts">
 import Framework from '.vitepress/theme/components/VFramework.vue';
 import LandingPageBlog from '.vitepress/theme/components/VLandingPageBlog.vue'
+import Contact  from '.vitepress/theme/components/VContact.vue';
 </script>
 
-<h2 style="padding-top: 0px;margin: 0px 0 16px;border-top: none;">About Me 👨‍💻</h2>
+<h1 align="center">Proxmox VE Scripts</h1>
+<h6 align="center">Streamlining your HomeLab</h6>
 
-Hey there, I'm Joey Yang, a full-stack engineer, lifelong learner, NJU & USTC graduate, currently working at ZOOM as a manager & architect & product engineer.
+These scripts empower users to create a Linux container or virtual machine interactively, providing choices for both simple and advanced configurations. The basic setup adheres to default settings, while the advanced setup gives users the ability to customize these defaults.
 
-My career goal is to build awesome SaaS products that can help people in scalable way.
 
-In the real world, I'm living in China, plan to be a global citizen. In my leisure time, I enjoy reading all kinds of books, playing badminton and table tennis.
+Options are displayed to users in a dialog box format. Once the user makes their selections, the script collects and validates their input to generate the final configuration for the container or virtual machine.
+
+
+<h6 align="center">Currently, I'm particularly interested in the following</h6>
+
+<Framework />
+
+<Contact />
 
 <h2>Recent Posts 📙</h2>
 <LandingPageBlog sort="recent" />

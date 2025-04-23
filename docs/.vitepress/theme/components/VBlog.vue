@@ -40,9 +40,10 @@ function filterTag(tag?: string) {
   <div>
     <section>
       <h1 class="flex items-center gap-2">
-        Joey Yang's blogs
-        <Icon class="inline text-[--vp-c-brand-1]" aria-hidden="true" icon="tabler:book-2" />
+        Proxmox VE Scripts
+        <Icon class="inline text-[--vp-c-brand-1]" aria-hidden="true" icon="tabler:activity" />
       </h1>
+      <p>Scripts for Simplifying your HomeLab.</p>
     </section>
     <div v-if="tagFilter" class="mt-8">
       <span style="font-weight: 500;">Filtered by Tag:</span> <a class="blog-tag" id="clean-filter" @click="filterTag()">{{ tagFilter }}</a>

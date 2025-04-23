@@ -28,14 +28,14 @@ code {
 }
 
 :root {
-  --my-white: #1d1720;
-  --my-black: #e7e9e0;
-  --my-black-light: #d2e0e4;
-  --my-blue: #1b1927;
-  --my-blue-dark: #a1c9cc;
-  --my-blue-light: #601f99;
-  --my-gray: #727476;
-  --my-gray-dark: #b1bfc8;
+  --my-white: #a9d5c4;
+  --my-black: #0c1222;
+  --my-black-light: #13212e;
+  --my-blue: #1174b1;
+  --my-blue-dark: #2b7b86;
+  --my-blue-light: #4df5ff;
+  --my-gray: #9fa3a5;
+  --my-gray-dark: #364149;
   --my-highlight-bg: #9789dc;
 }
 
@@ -170,7 +170,7 @@ progress::-webkit-progress-value{
   color: var(--my-white);
   border-radius: 6px;
   opacity: 90%;
-  background-color:rgb(211, 226, 251);
+  background-color:rgb(26, 39, 61);
   padding: 4px 8px;
 }
 

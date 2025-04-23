@@ -3,14 +3,13 @@ import { Icon } from '@iconify/vue'
 
 // prettier-ignore
 const items = [
-  { title: 'GitHub', link: 'https://github.com/code2life', icon: 'tabler:brand-github' },
-  { title: 'Linkedin', link: 'https://www.linkedin.com/in/joey-yang-023448244/', icon: 'tabler:brand-linkedin' },
-  { title: 'Mail', link: 'mailto:code2life@ustc.edu', icon: 'tabler:mail' },
-  { title: 'RSS Feed', link: '/feed.xml', icon: 'tabler:rss' }
+  { title: 'GitHub', link: 'https://github.com/Mati-l33t', icon: 'tabler:brand-github' },
+  { title: 'Mail', link: 'mailto:info@proxmox-scripts.com', icon: 'tabler:mail' },
+  { title: 'RSS Feed', link: '/feed.xml', icon: 'tabler:rss' },
 ]
 
 const generateCopyright = () => {
-  const startYear = 2023
+  const startYear = 2024
   const currentYear = new Date().getFullYear()
   if (currentYear === startYear) {
     return `Copyright © ${startYear}`
@@ -36,17 +35,31 @@ const generateCopyright = () => {
           <Icon :icon="item.icon" width="1.25em" height="1.25em" aria-hidden="true" />
         </a>
       </div>
+      <p
+        class="relative items-center justify-center gap-[1ex] text-sm/6 font-medium text-[--vp-c-text-2]"
+      >
+        Proudly hosted with
+        <a href="https://www.proxmox.com/" target="_blank">
+          <span class="sr-only"> Proxmox </span>
+          <Icon
+            class="ml-[3px] inline align-middle brightness-200 transition duration-300 hover:filter-none"
+            height="2em"
+            aria-hidden="true"
+            icon="arcticons:proxmox-virtual-environment"
+          />
+        </a>
+      </p>
       <p class="text-sm/6 font-medium text-[--vp-c-text-2]">
         <a
           class="text-[--vp-c-brand-1] transition duration-300 hover:text-[--vp-c-brand-2]"
-          href="https://github.com/code2life/joey-blog-site/blob/main/LICENSE-POST"
+          href="https://github.com/Mati-l33t/blog/blob/main/LICENSE-POST"
           target="_blank"
           >CC BY 4.0</a
         >
         |
         <a
           class="text-[--vp-c-brand-1] transition duration-300 hover:text-[--vp-c-brand-2]"
-          href="https://github.com/code2life/joey-blog-site/blob/main/LICENSE-CODE"
+          href="https://github.com/Mati-l33t/blog/blob/main/LICENSE-CODE"
           target="_blank"
           >MIT License</a
         >
@@ -55,12 +68,11 @@ const generateCopyright = () => {
           {{ generateCopyright() }}
           <a
             class="italic text-[--vp-c-brand-1] transition duration-300 hover:text-[--vp-c-brand-2]"
-            href="mailto:code2life@ustc.edu"
+            href="mailto:info@proxmox-scripts.com"
             target="_blank"
-            >Code2Life</a>
+            >Promox-Scripts</a
+          >
         </span>
-        &nbsp;&nbsp;
-        <a href="https://beian.miit.gov.cn" target="_blank">网站备案编号：皖ICP备18004921号</a>
       </p>
     </div>
   </footer>
