@@ -5,4 +5,4 @@
 
 ## License
 
-The code uses the [MIT](https://github.com/Mati-l33t/Rea/blob/main/LICENSE-CODE) license, and the blog post uses the [CC BY 4.0](https://github.com/Mati-l33t/Rea/blob/main/LICENSE-POST) license.
+The code uses the [MIT](https://github.com/Mati-l33t/blog/blob/main/LICENSE-CODE) license, and the blog post uses the [CC BY 4.0](https://github.com/Mati-l33t/blog/blob/main/LICENSE-POST) license.
